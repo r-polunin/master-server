@@ -1,4 +1,4 @@
-package base;
+package messageSystem;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -8,10 +8,6 @@ public class Address{
 
 	public Address(){
 		this.abonentId=abonentIdCreator.incrementAndGet();
-	}
-
-	public int getAbonentId(){
-		return abonentId;
 	}
 
 	public int hashCode(){

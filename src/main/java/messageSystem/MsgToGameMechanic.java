@@ -1,9 +1,7 @@
 package messageSystem;
 
 import base.Abonent;
-import base.Address;
 import base.GameMechanic;
-import base.Msg;
 
 
 public abstract class MsgToGameMechanic extends Msg{

@@ -3,11 +3,11 @@ package gameMechanic;
 import java.util.HashMap;
 import java.util.Map;
 
-import base.Address;
+import messageSystem.Address;
 import base.GameMechanic;
-import base.MessageSystem;
+import messageSystem.MessageSystem;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
 import gameClasses.Snapshot;
 import gameClasses.Stroke;
 import gameMechanic.Stroke.*;

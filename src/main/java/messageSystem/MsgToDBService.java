@@ -1,9 +1,7 @@
 package messageSystem;
 
 import base.Abonent;
-import base.Address;
 import base.DataAccessObject;
-import base.Msg;
 
 
 public abstract class MsgToDBService extends Msg{

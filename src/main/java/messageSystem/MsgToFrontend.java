@@ -1,9 +1,7 @@
 package messageSystem;
 
 import base.Abonent;
-import base.Address;
-import base.Frontend;
-import base.Msg;
+import frontend.Frontend;
 
 
 public abstract class MsgToFrontend extends Msg{

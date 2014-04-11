@@ -1,7 +1,7 @@
 package frontend;
 
 import messageSystem.MsgToGameMechanic;
-import base.Address;
+import messageSystem.Address;
 import base.GameMechanic;
 
 public class MsgRemoveUserFromGM extends MsgToGameMechanic{

@@ -1,6 +1,6 @@
 package base;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
 
 public interface UserData extends Abonent,Runnable{
 	public void updateUserId(String sessionId,UserDataSet user);

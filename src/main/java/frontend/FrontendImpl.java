@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import frontend.newOrLoginUser.*;
+import messageSystem.frontend.*;
 
 import utils.CookieDescriptor;
 import utils.SHA2;
@@ -21,10 +21,9 @@ import utils.SysInfo;
 import utils.TemplateHelper;
 import utils.TimeHelper;
 
-import base.Address;
-import base.Frontend;
-import base.MessageSystem;
-import dbService.UserDataSet;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
+import datebase.UserDataSet;
 
 
 public class FrontendImpl extends AbstractHandler implements Frontend{
@@ -42,6 +41,62 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 	public Address getAddress(){
 		return address;
 	}
+
+    public void handle(String target,Request baseRequest,
+                       HttpServletRequest request, HttpServletResponse response){
+        prepareResponse(response);
+        status stat=status.nothing;
+        CookieDescriptor cookie=new CookieDescriptor(request.getCookies());
+        String sessionId=cookie.getCookieByName("sessionId");
+        String strStartServerTime=cookie.getCookieByName("startServerTime");
+        UserDataSet userSession;
+        baseRequest.setHandled(true);
+        if(newUser(sessionId, strStartServerTime)){
+            userSession=new UserDataSet();
+            sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
+            strStartServerTime=UserDataImpl.getStartServerTime();
+            UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
+        }
+        else{
+            stat=status.haveCookie;
+            userSession=UserDataImpl.getUserSessionBySessionId(sessionId);
+        }
+        if(!inWeb(target)){
+            if(!isStatic(target)){
+                sendPage("404.html",userSession,response);
+            }
+            return;
+        }
+        userSession.visit();
+        stat=getStatus(request, target, stat, sessionId);
+        if (stat!=status.haveCookieAndPost){
+            if(target.equals("/admin")){
+                getStatistic(response,userSession);
+                return;
+            }
+            else if (target.equals("/rules")){
+                sendPage("rules.html",userSession, response);
+                return;
+            }
+        }
+        switch(stat){
+            case nothing:
+                onNothingStatus(target, sessionId, userSession,strStartServerTime, response);
+                break;
+            case haveCookie:
+                onHaveCookieStatus(target, userSession,response);
+                break;
+            case haveCookieAndPost:
+                onHaveCookieAndPostStatus(target,sessionId, userSession,request, response);
+                break;
+            case waiting:
+                onWaitingStatus(response);
+                break;
+            case ready:
+                onReadyStatus(target, sessionId, userSession, response);
+                break;
+        }
+    }
 
 	private void getStatistic(HttpServletResponse response, UserDataSet userSession){
 		Map<String,String> data= new HashMap<String,String>();
@@ -213,62 +268,6 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 		else{
 			response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
 			response.addHeader("Location", "/");
-		}
-	}
-
-	public void handle(String target,Request baseRequest,
-			HttpServletRequest request, HttpServletResponse response){
-		prepareResponse(response);
-		status stat=status.nothing;
-		CookieDescriptor cookie=new CookieDescriptor(request.getCookies());
-		String sessionId=cookie.getCookieByName("sessionId");
-		String strStartServerTime=cookie.getCookieByName("startServerTime");
-		UserDataSet userSession;
-		baseRequest.setHandled(true);
-		if(newUser(sessionId, strStartServerTime)){
-			userSession=new UserDataSet();
-			sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
-			strStartServerTime=UserDataImpl.getStartServerTime();
-			UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
-		}
-		else{
-			stat=status.haveCookie;
-			userSession=UserDataImpl.getUserSessionBySessionId(sessionId);
-		}
-		if(!inWeb(target)){
-			if(!isStatic(target)){
-				sendPage("404.html",userSession,response);
-			}
-			return;	
-		}
-		userSession.visit();
-		stat=getStatus(request, target, stat, sessionId);
-		if (stat!=status.haveCookieAndPost){
-			if(target.equals("/admin")){
-				getStatistic(response,userSession);
-				return;
-			}
-			else if (target.equals("/rules")){
-				sendPage("rules.html",userSession, response);
-				return;
-			}
-		}
-		switch(stat){
-		case nothing:
-			onNothingStatus(target, sessionId, userSession,strStartServerTime, response);
-			break;
-		case haveCookie:
-			onHaveCookieStatus(target, userSession,response);
-			break;
-		case haveCookieAndPost:
-			onHaveCookieAndPostStatus(target,sessionId, userSession,request, response);
-			break;
-		case waiting:
-			onWaitingStatus(response);
-			break;
-		case ready:
-			onReadyStatus(target, sessionId, userSession, response);
-			break;
 		}
 	}
 }

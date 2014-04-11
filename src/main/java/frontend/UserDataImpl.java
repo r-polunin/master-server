@@ -1,6 +1,5 @@
 package frontend;
 
-import frontend.MsgRemoveUserFromGM;
 import gameMechanic.gameCreating.MsgCreateGames;
 
 import java.util.HashMap;
@@ -9,7 +8,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import dbService.MsgUpdateUsers;
+import messageSystem.datebase.MsgUpdateUsers;
 
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 
@@ -18,10 +17,10 @@ import resource.TimeSettings;
 
 import chat.ChatWSImpl;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
 
-import base.Address;
-import base.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 import base.UserData;
 
 import utils.Caster;

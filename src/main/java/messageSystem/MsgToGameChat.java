@@ -1,9 +1,7 @@
 package messageSystem;
 
 import base.Abonent;
-import base.Address;
 import base.GameChat;
-import base.Msg;
 
 
 public abstract class MsgToGameChat extends Msg{

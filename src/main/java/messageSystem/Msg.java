@@ -1,5 +1,7 @@
-package base;
+package messageSystem;
 
+
+import base.Abonent;
 
 public abstract class Msg{
 	final private Address from,to;

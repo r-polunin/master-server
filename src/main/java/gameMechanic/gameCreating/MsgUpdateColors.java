@@ -2,7 +2,7 @@ package gameMechanic.gameCreating;
 
 import java.util.Map;
 
-import base.Address;
+import messageSystem.Address;
 import base.WebSocket;
 import messageSystem.MsgToWebSocket;
 

@@ -1,4 +1,4 @@
-package dbService;
+package datebase;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 import utils.TimeHelper;
-import base.Address;
+import messageSystem.Address;
 import base.DataAccessObject;
-import base.MessageSystem;
+import messageSystem.MessageSystem;
 
 public class DBServiceImpl implements DataAccessObject{
 	private final MessageSystem messageSystem;
@@ -76,13 +76,8 @@ public class DBServiceImpl implements DataAccessObject{
 		}
 	}
 
-	public void updateAI(String table, int[] fields, String winner, int whiteQuantity, int blackQuantity){
-		TExecutor.findPosition(connection, table, fields, whiteQuantity, blackQuantity);
-	}
-	
 	public void run(){
 		try{
-			//			Driver driver = (Driver) Class.forName("org.sqlite.JDBC").newInstance();
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
 		}
@@ -92,7 +87,6 @@ public class DBServiceImpl implements DataAccessObject{
 			System.err.println(e.getMessage());
 			System.exit(-1);
 		}
-		//		String url = "jdbc:sqlite:db/game.db";
 		String url="jdbc:mysql://localhost:3306/checkers?user=root&password=";
 		try{
 			connection = DriverManager.getConnection(url);

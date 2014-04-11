@@ -1,6 +1,6 @@
 package gameMechanic.gameCreating;
 
-import base.Address;
+import messageSystem.Address;
 import base.GameChat;
 import messageSystem.MsgToGameChat;
 

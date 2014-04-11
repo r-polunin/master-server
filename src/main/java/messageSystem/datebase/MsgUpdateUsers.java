@@ -1,10 +1,9 @@
-package dbService;
+package messageSystem.datebase;
 
 import java.util.List;
 
-import dbService.UserDataSet;
-
-import base.Address;
+import datebase.UserDataSet;
+import messageSystem.Address;
 import base.DataAccessObject;
 import messageSystem.MsgToDBService;
 

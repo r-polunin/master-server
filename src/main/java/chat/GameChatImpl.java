@@ -7,11 +7,11 @@ import java.util.Vector;
 
 import utils.TimeHelper;
 
-import base.Address;
+import messageSystem.Address;
 import base.GameChat;
-import base.MessageSystem;
+import messageSystem.MessageSystem;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
 
 import frontend.UserDataImpl;
 

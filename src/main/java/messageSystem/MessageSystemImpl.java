@@ -5,10 +5,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import base.Abonent;
-import base.Address;
-import base.AddressService;
-import base.MessageSystem;
-import base.Msg;
 
 
 public class MessageSystemImpl implements MessageSystem{
@@ -28,10 +24,6 @@ public class MessageSystemImpl implements MessageSystem{
 
 	public void putMsg(Address to,Msg msg){
 		(messages.get(to)).add(msg);
-	}
-
-	public Map<Address,ConcurrentLinkedQueue<Msg>> getMessages(){
-		return messages;
 	}
 
 	public void execForAbonent(Abonent abonent){

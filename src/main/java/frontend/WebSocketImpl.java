@@ -7,13 +7,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import base.Address;
-import base.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 import base.WebSocket;
 
 import gameMechanic.Stroke.MsgCheckStroke;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
 import gameClasses.Snapshot;
 import gameClasses.Stroke;
 import utils.TimeHelper;

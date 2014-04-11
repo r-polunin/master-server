@@ -4,7 +4,7 @@ import java.util.Map;
 
 import gameClasses.Stroke;
 
-import base.Address;
+import messageSystem.Address;
 import base.WebSocket;
 import messageSystem.MsgToWebSocket;
 

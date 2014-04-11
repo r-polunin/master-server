@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import base.Abonent;
-import base.Address;
-import base.AddressService;
 
 
 public class AddressServiceImpl implements AddressService{
@@ -19,7 +17,6 @@ public class AddressServiceImpl implements AddressService{
 
 	AddressServiceImpl(){
 	}
-
 	public void addService (Abonent abonent,String name){
 		if(!nameToQuantity.containsKey(name))
 			nameToQuantity.put(name, 0);

@@ -1,7 +1,7 @@
-package frontend.newOrLoginUser;
+package messageSystem.frontend;
 
-import dbService.UserDataSet;
-import base.Address;
+import datebase.UserDataSet;
+import messageSystem.Address;
 import base.UserData;
 import messageSystem.MsgToUserData;
 

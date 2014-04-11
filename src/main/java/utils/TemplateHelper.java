@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import base.Frontend;
+import frontend.Frontend;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -34,15 +34,4 @@ public class TemplateHelper {
 			e.printStackTrace();
 		}
 	}
-
-	public static void renderTemplate(String name, Writer out) {
-		Template template;
-		try {
-			template = cfg.getTemplate(name);
-			template.process(null, out);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

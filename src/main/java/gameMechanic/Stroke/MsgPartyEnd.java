@@ -1,6 +1,6 @@
 package gameMechanic.Stroke;
 
-import base.Address;
+import messageSystem.Address;
 import base.UserData;
 import messageSystem.MsgToUserData;
 

@@ -1,4 +1,4 @@
-package dbService;
+package datebase;
 
 import java.sql.ResultSet;
 

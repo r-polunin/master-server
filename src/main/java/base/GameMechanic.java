@@ -5,7 +5,8 @@ import gameClasses.Stroke;
 
 import java.util.Map;
 
-import dbService.UserDataSet;
+import datebase.UserDataSet;
+import messageSystem.MessageSystem;
 
 public interface GameMechanic extends Abonent,Runnable{
 	public Map<String, String> createGames(Map<String, UserDataSet> users);
