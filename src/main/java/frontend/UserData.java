@@ -1,6 +1,7 @@
-package base;
+package frontend;
 
 import datebase.UserDataSet;
+import messagesystem.Abonent;
 
 public interface UserData extends Abonent,Runnable{
 	public void updateUserId(String sessionId,UserDataSet user);

@@ -9,9 +9,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 import utils.TimeHelper;
-import messageSystem.Address;
-import base.DataAccessObject;
-import messageSystem.MessageSystem;
+import messagesystem.Address;
+import messagesystem.MessageSystem;
 
 public class DBServiceImpl implements DataAccessObject{
 	private final MessageSystem messageSystem;
@@ -93,7 +92,7 @@ public class DBServiceImpl implements DataAccessObject{
 		}
 		catch(Exception e){
 			System.err.println("\nError");
-			System.err.println("DVServiceImpl, run2");
+			System.err.println("DBServiceImpl, run2");
 			System.err.println(e.getMessage());
 			System.exit(-1);
 		}

@@ -1,9 +1,10 @@
-package base;
+package datebase;
 
 import java.util.List;
 
 import datebase.UserDataSet;
-import messageSystem.MessageSystem;
+import messagesystem.Abonent;
+import messagesystem.MessageSystem;
 
 public interface DataAccessObject extends Abonent,Runnable{
 	public MessageSystem getMessageSystem();

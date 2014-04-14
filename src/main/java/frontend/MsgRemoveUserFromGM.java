@@ -1,8 +1,8 @@
 package frontend;
 
-import messageSystem.MsgToGameMechanic;
-import messageSystem.Address;
-import base.GameMechanic;
+import messagesystem.MsgToGameMechanic;
+import messagesystem.Address;
+import gamemechanic.GameMechanic;
 
 public class MsgRemoveUserFromGM extends MsgToGameMechanic{
 	final private String sessionId;

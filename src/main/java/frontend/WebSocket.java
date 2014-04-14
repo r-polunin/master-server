@@ -1,7 +1,8 @@
-package base;
+package frontend;
 
-import gameClasses.Snapshot;
-import gameClasses.Stroke;
+import gameclasses.Snapshot;
+import gameclasses.Stroke;
+import messagesystem.Abonent;
 
 import java.util.Map;
 

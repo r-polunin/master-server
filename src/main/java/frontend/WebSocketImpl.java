@@ -7,15 +7,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import messageSystem.Address;
-import messageSystem.MessageSystem;
-import base.WebSocket;
+import messagesystem.Address;
+import messagesystem.MessageSystem;
 
-import gameMechanic.Stroke.MsgCheckStroke;
+import gamemechanic.stroke.MsgCheckStroke;
 
 import datebase.UserDataSet;
-import gameClasses.Snapshot;
-import gameClasses.Stroke;
+import gameclasses.Snapshot;
+import gameclasses.Stroke;
 import utils.TimeHelper;
 
 public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{

@@ -7,9 +7,8 @@ import java.util.Vector;
 
 import utils.TimeHelper;
 
-import messageSystem.Address;
-import base.GameChat;
-import messageSystem.MessageSystem;
+import messagesystem.Address;
+import messagesystem.MessageSystem;
 
 import datebase.UserDataSet;
 

@@ -1,6 +1,7 @@
-package base;
+package chat;
 
-import messageSystem.MessageSystem;
+import messagesystem.Abonent;
+import messagesystem.MessageSystem;
 
 public interface GameChat extends Runnable, Abonent {
 	public MessageSystem getMessageSystem();
