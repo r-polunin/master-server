@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import messagesystem.frontend.*;
+import messageSystem.frontend.*;
 
 import utils.CookieDescriptor;
 import utils.SHA2;
@@ -21,8 +21,8 @@ import utils.SysInfo;
 import utils.TemplateHelper;
 import utils.TimeHelper;
 
-import messagesystem.Address;
-import messagesystem.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 import datebase.UserDataSet;
 
 
