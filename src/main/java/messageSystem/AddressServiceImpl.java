@@ -17,11 +17,11 @@ public class AddressServiceImpl implements AddressService{
 
 	AddressServiceImpl(){
 	}
-	public void addService (UserDataImpl abonent,String name){
+	public void addService (Address abonent,String name){
 		if(!nameToQuantity.containsKey(name))
 			nameToQuantity.put(name, 0);
 		nameToQuantity.put(name, nameToQuantity.get(name)+1);
-		nameToAddress.put(name+(nameToQuantity.get(name)).toString(), abonent.getAddress());
+		nameToAddress.put(name+(nameToQuantity.get(name)).toString(), abonent);
 		if(nameToQuantity.get(name)==1)
 			nameToLast.put(name, 1);
 	}

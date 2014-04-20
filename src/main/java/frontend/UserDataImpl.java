@@ -7,21 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
-
 import messageSystem.datebase.MsgUpdateUsers;
-
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
-
 import resource.Rating;
 import resource.TimeSettings;
-
 import chat.ChatWSImpl;
-
 import datebase.UserDataSet;
-
 import messageSystem.Address;
 import messageSystem.MessageSystem;
-
 import utils.Caster;
 import utils.SHA2;
 import utils.TimeHelper;
@@ -44,7 +37,7 @@ public class UserDataImpl implements UserData{
 	public UserDataImpl(MessageSystem msgSystem){
 		messageSystem=msgSystem;
 		address=new Address();
-		messageSystem.addService(this,"UserData");
+		messageSystem.addService(address,"UserData");
 	}
 
 	public Address getAddress(){
@@ -124,7 +117,7 @@ public class UserDataImpl implements UserData{
 			return sessionIdToChatWS.get(sessionId).getSession().getRemote();
 	}
 
-	private String getOldUserSessionId(int id){
+	String getOldUserSessionId(int id){
 		for(String sessionId:logInUsers.keySet()){
 			if(logInUsers.get(sessionId).getId()==id)
 				return sessionId;
@@ -143,7 +136,7 @@ public class UserDataImpl implements UserData{
 		getUserSessionBySessionId(sessionId).setPostStatus(0);
 	}
 
-	private void createGames() {
+	boolean createGames() {
 		Map<String,UserDataSet> sendMap = 
 				new ConcurrentHashMap<String, UserDataSet>();
 		String[] keys = Caster.castKeysToStrings(wantToPlay);
@@ -160,7 +153,9 @@ public class UserDataImpl implements UserData{
 			Address to=messageSystem.getAddressByName("gameMechanic");
 			MsgCreateGames msg=new MsgCreateGames(address,to,sendMap);
 			messageSystem.putMsg(to, msg);
+            return true;
 		}
+        return false;
 	}
 
 	private void removeUser(String sessionId){
@@ -172,7 +167,7 @@ public class UserDataImpl implements UserData{
 	}
 
 	private static void removeUserFromGM(String sessionId){
-		Address to = messageSystem.getAddressByName("gameMechanic");
+		Address to = new Address(messageSystem.getAddressByName("gameMechanic"));
 		MsgRemoveUserFromGM msg = new MsgRemoveUserFromGM(null, to, sessionId);
 		messageSystem.putMsg(to, msg);
 	}
@@ -203,19 +198,23 @@ public class UserDataImpl implements UserData{
 		return (curTime-userSession.getLastVisit()>TimeSettings.getExitTime());
 	}
 
-	public void partyEnd(int winId, int loseId){
+	public boolean partyEnd(int winId, int loseId){
 		List<UserDataSet> updateUsers = new Vector<UserDataSet>();
 		UserDataSet winUserSession = null, loseUserSession = null;
 		String winSessionId = getSessionIdByUserId(winId);
 		String loseSessionId = getSessionIdByUserId(loseId);
+
 		sessionIdToChatWS.remove(winSessionId);
 		sessionIdToChatWS.remove(loseSessionId);
+
 		winUserSession = getUserSessionBySessionId(winSessionId);
 		loseUserSession = getUserSessionBySessionId(loseSessionId);
+        int winRating = 0;
+        int loseRating = 0;
 		int diff = Rating.getAvgDiff();
 		if((loseUserSession!=null)&&(winUserSession!=null)){
-			int winRating = winUserSession.getRating();
-			int loseRating = loseUserSession.getRating();
+			winRating = winUserSession.getRating();
+			loseRating = loseUserSession.getRating();
 			if(winRating!=loseRating)
 				diff = Rating.getDiff(winRating, loseRating);
 		}
@@ -231,14 +230,18 @@ public class UserDataImpl implements UserData{
 			Address to = messageSystem.getAddressByName("DBService");
 			MsgUpdateUsers msg = new MsgUpdateUsers(address, to, updateUsers);
 			messageSystem.putMsg(to, msg);
+            if ( (winUserSession.getRating()>winRating) && (loseUserSession.getRating()<loseRating) ) {
+                return true;
+            }
 		}
+        return false;
 	}
 
 	public void run() {
 		int count=0;
 		while(true){
 			count=(count+1)%250;
-			messageSystem.execForAbonent(this);
+			messageSystem.execForAbonent(address);
 			checkUsers(count);
 			createGames();
 			TimeHelper.sleep(200);

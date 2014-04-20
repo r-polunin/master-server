@@ -1,9 +1,10 @@
 package frontend;
 
 import datebase.UserDataSet;
-import messagesystem.Abonent;
+import messageSystem.Address;
 
-public interface UserData extends Abonent,Runnable{
+public interface UserData extends Runnable{
 	public void updateUserId(String sessionId,UserDataSet user);
-	public void partyEnd(int winId, int loseId);
+	public boolean partyEnd(int winId, int loseId);
+    public Address getAddress();
 }

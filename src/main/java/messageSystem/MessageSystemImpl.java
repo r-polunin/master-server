@@ -13,8 +13,8 @@ public class MessageSystemImpl implements MessageSystem{
 			new HashMap<Address,ConcurrentLinkedQueue<Msg>>();
 	private AddressService addressService = new AddressServiceImpl();
 
-	public void addService (UserDataImpl abonent,String name){
-		messages.put(abonent.getAddress(),new ConcurrentLinkedQueue<Msg>());
+	public void addService (Address abonent,String name){
+		messages.put(abonent,new ConcurrentLinkedQueue<Msg>());
 		addressService.addService(abonent, name);
 	}
 
@@ -26,8 +26,8 @@ public class MessageSystemImpl implements MessageSystem{
 		(messages.get(to)).add(msg);
 	}
 
-	public void execForAbonent(UserDataImpl abonent){
-		ConcurrentLinkedQueue<Msg> messageQueue=messages.get(abonent.getAddress());
+	public void execForAbonent(Address abonent){
+		ConcurrentLinkedQueue<Msg> messageQueue=messages.get(abonent);
 		while(!messageQueue.isEmpty()){
 			Msg message=messageQueue.poll();
 			message.exec(abonent);

@@ -1,7 +1,7 @@
 package messageSystem;
 
-import base.Abonent;
-import base.WebSocket;
+import messageSystem.Address;
+import frontend.WebSocket;
 
 
 public abstract class MsgToWebSocket extends Msg{
@@ -10,7 +10,7 @@ public abstract class MsgToWebSocket extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
+	public void exec(Address abonent){
 		if (abonent instanceof WebSocket){
 			exec((WebSocket)abonent);
 		}

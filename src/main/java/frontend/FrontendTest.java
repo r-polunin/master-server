@@ -3,16 +3,9 @@ package frontend;
 import datebase.UserDataSet;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
-import org.eclipse.jetty.server.HttpChannel;
-import org.eclipse.jetty.server.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.CookieDescriptor;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 

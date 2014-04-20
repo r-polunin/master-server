@@ -35,7 +35,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 	public FrontendImpl(MessageSystem msgSystem){
 		address=new Address();
 		messageSystem=msgSystem;
-		messageSystem.addService(this,"Frontend");
+		messageSystem.addService(address,"Frontend");
 	}
 
 	public Address getAddress(){
@@ -44,13 +44,6 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 
     public void handle(String target,Request baseRequest,
                        HttpServletRequest request, HttpServletResponse response){
-        /*
-        1)создать куки если их нет
-        2)проставить статус в зависимости от метода (post) и существования сессии  (getStatus)
-        3)проверить валидность запроса, если не валиден- отправить 404
-        4) если stat!=status.haveCookieAndPost отправить уже заготовленные статические данные
-        5) в зависиомсти от статуса отправть ответ
-        */
         prepareResponse(response);
         status stat=status.nothing;
         CookieDescriptor cookie=new CookieDescriptor(request.getCookies());

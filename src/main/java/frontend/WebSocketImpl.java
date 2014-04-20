@@ -7,14 +7,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import messagesystem.Address;
-import messagesystem.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 
-import gamemechanic.stroke.MsgCheckStroke;
+import gameMechanic.Stroke.MsgCheckStroke;
 
 import datebase.UserDataSet;
-import gameclasses.Snapshot;
-import gameclasses.Stroke;
+import gameClasses.Snapshot;
+import gameClasses.Stroke;
 import utils.TimeHelper;
 
 public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
@@ -24,7 +24,7 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 	public WebSocketImpl(boolean useMS){
 		address=new Address();
 		if(useMS)
-			messageSystem.addService(this,"WebSocket");
+			messageSystem.addService(address,"WebSocket");
 	}
 
 	public WebSocketImpl(){
@@ -149,7 +149,7 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 
 	public void run() {
 		while(true){
-			messageSystem.execForAbonent(this);
+			messageSystem.execForAbonent(address);
 			TimeHelper.sleep(200);
 		}
 

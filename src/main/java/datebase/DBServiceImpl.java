@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 import utils.TimeHelper;
-import messagesystem.Address;
-import messagesystem.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 
 public class DBServiceImpl implements DataAccessObject{
 	private final MessageSystem messageSystem;
@@ -20,7 +20,7 @@ public class DBServiceImpl implements DataAccessObject{
 	public DBServiceImpl(MessageSystem msgSystem){
 		address=new Address();
 		messageSystem = msgSystem;
-		messageSystem.addService(this,"DBService");
+		messageSystem.addService(address,"DBService");
 	}
 
 	public MessageSystem getMessageSystem(){
@@ -97,7 +97,7 @@ public class DBServiceImpl implements DataAccessObject{
 			System.exit(-1);
 		}
 		while(true){
-			messageSystem.execForAbonent(this);
+			messageSystem.execForAbonent(address);
 			TimeHelper.sleep(200);
 		}
 	}

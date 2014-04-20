@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public interface MessageSystem{
-	public void addService (UserDataImpl abonent,String name);
+	public void addService (Address abonent,String name);
 	public Address getAddressByName(String name);
 	public void putMsg(Address to,Msg msg);
-	public void execForAbonent(UserDataImpl abonent);
+	public void execForAbonent(Address abonent);
 }

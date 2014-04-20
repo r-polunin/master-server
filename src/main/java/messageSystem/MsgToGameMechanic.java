@@ -1,7 +1,6 @@
 package messageSystem;
 
-import base.Abonent;
-import base.GameMechanic;
+import gameMechanic.GameMechanicImpl;
 
 
 public abstract class MsgToGameMechanic extends Msg{
@@ -10,10 +9,10 @@ public abstract class MsgToGameMechanic extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
-		if (abonent instanceof GameMechanic){
-			exec((GameMechanic)abonent);
+	public void exec(GameMechanicImpl abonent){
+		if (abonent instanceof GameMechanicImpl){
+			exec((GameMechanicImpl)abonent);
 		}
 	}
-	public abstract void exec(GameMechanic gameMechanic);
+	//public abstract void exec(GameMechanicImpl gameMechanic);
 }

@@ -19,5 +19,5 @@ public abstract class Msg{
 		return to;
 	}
 
-	public abstract void exec(UserDataImpl abonent);
+	public abstract void exec(Address abonent);
 }
