@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import base.Abonent;
+import frontend.UserDataImpl;
 
 
 public class MessageSystemImpl implements MessageSystem{
@@ -13,7 +13,7 @@ public class MessageSystemImpl implements MessageSystem{
 			new HashMap<Address,ConcurrentLinkedQueue<Msg>>();
 	private AddressService addressService = new AddressServiceImpl();
 
-	public void addService (Abonent abonent,String name){
+	public void addService (UserDataImpl abonent,String name){
 		messages.put(abonent.getAddress(),new ConcurrentLinkedQueue<Msg>());
 		addressService.addService(abonent, name);
 	}
@@ -26,7 +26,7 @@ public class MessageSystemImpl implements MessageSystem{
 		(messages.get(to)).add(msg);
 	}
 
-	public void execForAbonent(Abonent abonent){
+	public void execForAbonent(UserDataImpl abonent){
 		ConcurrentLinkedQueue<Msg> messageQueue=messages.get(abonent.getAddress());
 		while(!messageQueue.isEmpty()){
 			Msg message=messageQueue.poll();

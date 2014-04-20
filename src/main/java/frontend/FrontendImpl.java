@@ -44,31 +44,36 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 
     public void handle(String target,Request baseRequest,
                        HttpServletRequest request, HttpServletResponse response){
+        /*
+        1)создать куки если их нет
+        2)проставить статус в зависимости от метода (post) и существования сессии  (getStatus)
+        3)проверить валидность запроса, если не валиден- отправить 404
+        4) если stat!=status.haveCookieAndPost отправить уже заготовленные статические данные
+        5) в зависиомсти от статуса отправть ответ
+        */
         prepareResponse(response);
         status stat=status.nothing;
         CookieDescriptor cookie=new CookieDescriptor(request.getCookies());
         String sessionId=cookie.getCookieByName("sessionId");
         String strStartServerTime=cookie.getCookieByName("startServerTime");
-        UserDataSet userSession;
+        UserDataSet userSession=new UserDataSet();
         baseRequest.setHandled(true);
-        if(newUser(sessionId, strStartServerTime)){
-            userSession=new UserDataSet();
-            sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
-            strStartServerTime=UserDataImpl.getStartServerTime();
-            UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
+
+        if(isNewUser(sessionId, strStartServerTime)){
+            createNewSession(sessionId,strStartServerTime,userSession);
         }
         else{
             stat=status.haveCookie;
             userSession=UserDataImpl.getUserSessionBySessionId(sessionId);
         }
-        if(!inWeb(target)){
-            if(!isStatic(target)){
-                sendPage("404.html",userSession,response);
-            }
-            return;
-        }
+        sendPagesDependOnLocation(target, userSession, response);
         userSession.visit();
         stat=getStatus(request, target, stat, sessionId);
+        sendPagesDependOnStatus(stat,target,request, response, sessionId,userSession,strStartServerTime);
+    }
+
+    private void sendPagesDependOnStatus(status stat,String target, HttpServletRequest request, HttpServletResponse response, String sessionId,
+                                         UserDataSet userSession, String strStartServerTime) {
         if (stat!=status.haveCookieAndPost){
             if(target.equals("/admin")){
                 getStatistic(response,userSession);
@@ -96,6 +101,22 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
                 onReadyStatus(target, sessionId, userSession, response);
                 break;
         }
+
+    }
+
+    boolean sendPagesDependOnLocation(String target, UserDataSet userSession, HttpServletResponse response) {
+        if(!inWeb(target)){
+            if(!isStatic(target)){
+                return sendPage("404.html",userSession,response);
+            }
+        }
+        return false;
+    }
+
+    void createNewSession(String sessionId,String strStartServerTime, UserDataSet userSession) {
+        sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
+        strStartServerTime=UserDataImpl.getStartServerTime();
+        UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
     }
 
 	private void getStatistic(HttpServletResponse response, UserDataSet userSession){
@@ -153,13 +174,13 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 		else return (((target.substring(0, 5)).equals("/img/"))||((target.substring(0, 5)).equals("/css/")));
 	}
 
-	private boolean newUser(String strSessionId, String strStartServerTime){
+	private boolean isNewUser(String strSessionId, String strStartServerTime){
 		return((strSessionId==null)||(strStartServerTime==null)
 				||(!UserDataImpl.checkServerTime(strStartServerTime))
 				||(!UserDataImpl.containsSessionId(strSessionId)));
 	}
 
-	private void sendPage(String name, UserDataSet userSession, HttpServletResponse response){
+	boolean sendPage(String name, UserDataSet userSession, HttpServletResponse response){
 		try {
 			Map<String, String> data = new HashMap<String, String>();
 			data.put("page", name);
@@ -177,6 +198,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 		} 
 		catch (IOException ignor) {
 		}
+        return true;
 	}
 
 	private void onNothingStatus(String target,String strSessionId, UserDataSet userSession, String strStartServerTime,HttpServletResponse response){

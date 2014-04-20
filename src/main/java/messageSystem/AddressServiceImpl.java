@@ -4,7 +4,7 @@ package messageSystem;
 import java.util.HashMap;
 import java.util.Map;
 
-import base.Abonent;
+import frontend.UserDataImpl;
 
 
 public class AddressServiceImpl implements AddressService{
@@ -17,7 +17,7 @@ public class AddressServiceImpl implements AddressService{
 
 	AddressServiceImpl(){
 	}
-	public void addService (Abonent abonent,String name){
+	public void addService (UserDataImpl abonent,String name){
 		if(!nameToQuantity.containsKey(name))
 			nameToQuantity.put(name, 0);
 		nameToQuantity.put(name, nameToQuantity.get(name)+1);

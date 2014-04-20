@@ -1,6 +1,6 @@
 package frontend;
 
-import gamemechanic.gamecreating.MsgCreateGames;
+import gameMechanic.gameCreating.MsgCreateGames;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import messagesystem.datebase.MsgUpdateUsers;
+import messageSystem.datebase.MsgUpdateUsers;
 
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 
@@ -19,8 +19,8 @@ import chat.ChatWSImpl;
 
 import datebase.UserDataSet;
 
-import messagesystem.Address;
-import messagesystem.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 
 import utils.Caster;
 import utils.SHA2;
@@ -157,7 +157,7 @@ public class UserDataImpl implements UserData{
 			sendMap.put(sessionId, userSession);
 		}
 		if(sendMap.size()>0){
-			Address to=messageSystem.getAddressByName("GameMechanic");
+			Address to=messageSystem.getAddressByName("gameMechanic");
 			MsgCreateGames msg=new MsgCreateGames(address,to,sendMap);
 			messageSystem.putMsg(to, msg);
 		}
@@ -172,7 +172,7 @@ public class UserDataImpl implements UserData{
 	}
 
 	private static void removeUserFromGM(String sessionId){
-		Address to = messageSystem.getAddressByName("GameMechanic");
+		Address to = messageSystem.getAddressByName("gameMechanic");
 		MsgRemoveUserFromGM msg = new MsgRemoveUserFromGM(null, to, sessionId);
 		messageSystem.putMsg(to, msg);
 	}
