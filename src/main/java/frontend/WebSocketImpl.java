@@ -1,5 +1,6 @@
 package frontend;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
@@ -39,6 +40,23 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 		return address;
 	}
 
+    private void parseStringMessage(String message, JSONObject json, String sessionId, String startServerTime,
+                                    int from_x, int from_y, int to_x, int to_y, String status) throws ParseException {
+        JSONParser parser = new JSONParser();
+        json = (JSONObject) parser.parse(message);
+        sessionId=json.get("sessionId").toString();
+        startServerTime=json.get("startServerTime").toString();
+        from_x=Integer.parseInt(json.get("from_x").toString());
+        from_y=Integer.parseInt(json.get("from_y").toString());
+        to_x=Integer.parseInt(json.get("to_x").toString());
+        to_y=Integer.parseInt(json.get("to_y").toString());
+        status=json.get("status").toString();
+    }
+    private boolean isConnectedRightNow(String sessionId, String startServerTime,
+                                        int from_x, int from_y, int to_x, int to_y){
+        return ((from_x!=-1)&&(from_y!=-1)&&(to_x!=-1)&&(to_y!=-1)&&(sessionId!=null)&&
+                (UserDataImpl.checkServerTime(startServerTime)));
+    }
 	@Override
 	public void onWebSocketText(String message) {
 		if (isNotConnected()) {
@@ -47,24 +65,15 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 		String sessionId=null,startServerTime=null;
 		int from_x=-1, from_y=-1, to_x=-1, to_y=-1;
 		String status=null;
-		JSONParser parser = new JSONParser();
 		JSONObject json=null;
 		try{
-			json = (JSONObject) parser.parse(message);
-			sessionId=json.get("sessionId").toString();
-			startServerTime=json.get("startServerTime").toString();
-			from_x=Integer.parseInt(json.get("from_x").toString());
-			from_y=Integer.parseInt(json.get("from_y").toString());
-			to_x=Integer.parseInt(json.get("to_x").toString());
-			to_y=Integer.parseInt(json.get("to_y").toString());
-			status=json.get("status").toString();
+            parseStringMessage(message, json, sessionId, startServerTime, from_x, from_y, to_x, to_y, status);
 		}
 		catch (ParseException parseException) {
 		}
 		catch (Exception ignor){
 		}
-		if((from_x!=-1)&&(from_y!=-1)&&(to_x!=-1)&&(to_y!=-1)&&(sessionId!=null)&&
-				(UserDataImpl.checkServerTime(startServerTime))){
+		if(isConnectedRightNow(sessionId, startServerTime, from_x, from_y, to_x, to_y)){
 			checkStroke(sessionId, to_x, to_y, from_x, from_y, status);
 		}
 		else if ((sessionId!=null)&&(UserDataImpl.checkServerTime(startServerTime))){
@@ -109,23 +118,25 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 			System.err.println(e.getMessage());
 		}
 	}
+    private void setColorDependOnUser(String sessionId, String color) throws IOException {
+        String black="{\"color\":\"black\"}",white="{\"color\":\"white\"}";
+        UserDataSet userSession=UserDataImpl.getLogInUserBySessionId(sessionId);
+        if(color=="black"){
+            userSession.setColor("b");
+            UserDataImpl.getWSBySessionId(sessionId).sendString(black);
+        }
+        else if(color=="white"){
+            userSession.setColor("w");
+            UserDataImpl.getWSBySessionId(sessionId).sendString(white);
+        }
+    }
 
 	public void updateUsersColor(Map<String, String> usersToColors) {
-		UserDataSet userSession;
-		String color, black="{\"color\":\"black\"}",white="{\"color\":\"white\"}";
+        String color;
 		for(String sessionId:usersToColors.keySet()){
 			try{
 				color=usersToColors.get(sessionId);
-				userSession=UserDataImpl.getLogInUserBySessionId(sessionId);
-				color=usersToColors.get(sessionId);
-				if(color=="black"){
-					userSession.setColor("b");
-					UserDataImpl.getWSBySessionId(sessionId).sendString(black);
-				}
-				else if(color=="white"){
-					userSession.setColor("w");
-					UserDataImpl.getWSBySessionId(sessionId).sendString(white);
-				}
+                setColorDependOnUser(sessionId, color);
 			}
 			catch(Exception e){
 				System.err.println("\nError:");
