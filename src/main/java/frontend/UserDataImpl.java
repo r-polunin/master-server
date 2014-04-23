@@ -102,7 +102,6 @@ public class UserDataImpl implements UserData{
 			logInUsers.get(sessionId).visit();
 		}
 	}
-
 	public static RemoteEndpoint getWSBySessionId(String sessionId){
 		if(sessionIdToWS.get(sessionId)==null)
 			return null;

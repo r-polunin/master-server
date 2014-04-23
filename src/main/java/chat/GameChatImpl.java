@@ -36,6 +36,10 @@ public class GameChatImpl implements GameChat{
 		return messageSystem;
 	}
 
+    public List<ChatMessage> getChatMessageQueueBySessionId(String sessionId){
+        return sessionIdToChat.get(sessionId);
+    }
+
 	public void createChat(String sessionId1, String sessionId2){
 		List<ChatMessage> chat = new Vector<ChatMessage>();
 		sessionIdToChat.put(sessionId1, chat);

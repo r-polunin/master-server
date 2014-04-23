@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f8aa6b1-f74a-4c24-b25a-0035ac143e34" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/chat/GameChat.java" afterPath="$PROJECT_DIR$/src/main/java/chat/GameChat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/chat/ChatWSImpl.java" afterPath="$PROJECT_DIR$/src/main/java/chat/ChatWSImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/chat/GameChatImpl.java" afterPath="$PROJECT_DIR$/src/main/java/chat/GameChatImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/GameMechanicImpl.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/GameMechanicImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MessageSystem.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MessageSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MessageSystemImpl.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MessageSystemImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/Msg.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/Msg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgAddUser.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgAddUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateChat.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateChat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateGames.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateGames.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneSnapshot.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneSnapshot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneStroke.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneStroke.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgGetUser.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgGetUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgPartyEnd.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgPartyEnd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frontend/MsgRemoveUserFromGM.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/MsgRemoveUserFromGM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToDBService.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToDBService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToFrontend.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToFrontend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToGameChat.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToGameChat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToUserData.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/MsgToUserData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgUpdateColors.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgUpdateColors.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgUpdateUser.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/frontend/MsgUpdateUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/messageSystem/datebase/MsgUpdateUsers.java" afterPath="$PROJECT_DIR$/src/main/java/messageSystem/datebase/MsgUpdateUsers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frontend/WebSocket.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/WebSocket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frontend/WebSocketImpl.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/WebSocketImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frontend/UserDataImpl.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/UserDataImpl.java" />
     </list>
     <ignored path="java-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,85 +68,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MsgPartyEnd.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgPartyEnd.java">
+      <file leaf-file-name="ChatWSTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="25" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsgCheckStroke.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgCheckStroke.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="7" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="465">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsgCreateChat.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateChat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="7" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsgCreateGames.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgCreateGames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="7" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsgRemoveUserFromGM.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frontend/MsgRemoveUserFromGM.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="7" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+            <state line="28" column="35" selection-start="927" selection-end="927" vertical-scroll-proportion="0.55" vertical-offset="90" max-vertical-offset="690">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSocketTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocketTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.18103448" vertical-offset="0" max-vertical-offset="600">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Msg.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/Msg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="6" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="390">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageSystemImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/MessageSystemImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="36" selection-start="1019" selection-end="1031" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="645">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSocket.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="315">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -186,9 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/base/Address.java" />
-        <option value="$PROJECT_DIR$/src/main/java/base/DataAccessObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/base/UserData.java" />
         <option value="$PROJECT_DIR$/src/main/java/base/WebSocket.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/Frontend.java" />
@@ -201,7 +104,6 @@
         <option value="$PROJECT_DIR$/src/main/java/frontend/WebSocketServletImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/messageSystem/MsgToGameMechanic.java" />
         <option value="$PROJECT_DIR$/src/main/java/frontend/FrontendTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frontend/UserDataImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/frontend/UserData.java" />
         <option value="$PROJECT_DIR$/src/main/java/frontend/UserDataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/datebase/DataAccessObject.java" />
@@ -210,7 +112,6 @@
         <option value="$PROJECT_DIR$/src/main/java/frontend/WebSocketImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SysInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/VFSTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/chat/GameChatImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/messageSystem/MessageSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Executable.java" />
         <option value="$PROJECT_DIR$/src/main/java/messageSystem/MsgToGameChat.java" />
@@ -237,6 +138,11 @@
         <option value="$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgPartyEnd.java" />
         <option value="$PROJECT_DIR$/src/main/java/frontend/WebSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/messageSystem/Msg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chat/ChatWSImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chat/GameChatImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frontend/UserDataImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chat/ChatWSTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chat/GameChatTest.java" />
       </list>
     </option>
   </component>
@@ -968,7 +874,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37549096" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26394343" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26394343" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3091892" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1029,65 +935,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameClasses/Stroke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/gameCreating/MsgUpdateColors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneSnapshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/GameMechanic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="32" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/GameMechanicImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="48" selection-start="6654" selection-end="6654" vertical-scroll-proportion="0.0" vertical-offset="2674" max-vertical-offset="3225">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/GameSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="13" selection-start="862" selection-end="862" vertical-scroll-proportion="0.0" vertical-offset="326" max-vertical-offset="1245">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/datebase/MsgUpdateUsers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="13" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
@@ -1285,15 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/VFSTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="134" selection-end="134" vertical-scroll-proportion="0.21778585" vertical-offset="0" max-vertical-offset="551">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/Stroke/MsgDoneStroke.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="15" selection-start="126" selection-end="126" vertical-scroll-proportion="0.1816609" vertical-offset="0" max-vertical-offset="578">
@@ -1315,27 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSServletImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.075" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="224" selection-end="224" vertical-scroll-proportion="0.10221465" vertical-offset="0" max-vertical-offset="870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="28" selection-end="28" vertical-scroll-proportion="0.05" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/MsgToFrontend.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="25" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
@@ -1345,23 +1162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+        <state line="14" column="6" selection-start="398" selection-end="398" vertical-scroll-proportion="0.3488372" vertical-offset="0" max-vertical-offset="602">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocketImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="7" selection-start="480" selection-end="480" vertical-scroll-proportion="-0.07614213" vertical-offset="90" max-vertical-offset="1230">
-          <folding>
-            <element signature="method#parseStringMessage#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#isConnectedRightNow#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#onWebSocketText#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#addNewWS#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#checkStroke#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#setColorDependOnUser#0;class#WebSocketImpl#0" expanded="false" />
-            <element signature="method#updateUsersColor#0;class#WebSocketImpl#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1395,14 +1197,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/Msg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="6" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+        <state line="19" column="6" selection-start="260" selection-end="260" vertical-scroll-proportion="0.47342193" vertical-offset="0" max-vertical-offset="602">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messageSystem/MessageSystemImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="36" selection-start="1019" selection-end="1031" vertical-scroll-proportion="0.0" vertical-offset="183" max-vertical-offset="645">
+        <state line="33" column="36" selection-start="1019" selection-end="1031" vertical-scroll-proportion="0.7508306" vertical-offset="43" max-vertical-offset="645">
           <folding />
         </state>
       </provider>
@@ -1416,10 +1218,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/VFSTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="134" selection-end="134" vertical-scroll-proportion="0.19933555" vertical-offset="0" max-vertical-offset="602">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frontend/FrontendTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="426" selection-end="426" vertical-scroll-proportion="0.1816609" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/GameChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="17" selection-start="69" selection-end="69" vertical-scroll-proportion="0.1" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocketTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.18103448" vertical-offset="0" max-vertical-offset="600">
+        <state line="28" column="38" selection-start="564" selection-end="814" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.0.0.v20130308/websocket-common-9.0.0.v20130308.jar!/org/eclipse/jetty/websocket/common/WebSocketRemoteEndpoint.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="16" selection-start="1797" selection-end="1797" vertical-scroll-proportion="0.7962963" vertical-offset="20" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frontend/UserDataImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="36" selection-start="3179" selection-end="3182" vertical-scroll-proportion="2.3850574" vertical-offset="0" max-vertical-offset="3510">
+          <folding>
+            <element signature="e#783#803#0" expanded="true" />
+            <element signature="e#891#911#0" expanded="true" />
+            <element signature="e#4144#4165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frontend/WebSocketImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="7" selection-start="480" selection-end="480" vertical-scroll-proportion="0.1" vertical-offset="0" max-vertical-offset="1230">
+          <folding>
+            <element signature="method#parseStringMessage#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#isConnectedRightNow#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#onWebSocketText#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#addNewWS#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#checkStroke#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#setColorDependOnUser#0;class#WebSocketImpl#0" expanded="false" />
+            <element signature="method#updateUsersColor#0;class#WebSocketImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="58" selection-start="1740" selection-end="1744" vertical-scroll-proportion="0.41226575" vertical-offset="493" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="28" selection-end="28" vertical-scroll-proportion="0.05" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSServletImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.075" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/GameChatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="450" selection-end="450" vertical-scroll-proportion="0.4" vertical-offset="0" max-vertical-offset="600">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/GameChatImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="40" selection-start="1606" selection-end="1613" vertical-scroll-proportion="0.75" vertical-offset="90" max-vertical-offset="840">
+          <folding>
+            <element signature="method#getChatMessageQueueBySessionId#0;class#GameChatImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chat/ChatWSTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="35" selection-start="927" selection-end="927" vertical-scroll-proportion="0.55" vertical-offset="90" max-vertical-offset="690">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
