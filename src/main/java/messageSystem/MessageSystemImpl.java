@@ -3,7 +3,6 @@ package messageSystem;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
-
 import frontend.UserDataImpl;
 
 
@@ -25,6 +24,9 @@ public class MessageSystemImpl implements MessageSystem{
 	public void putMsg(Address to,Msg msg){
 		(messages.get(to)).add(msg);
 	}
+    public ConcurrentLinkedQueue<Msg> getMsgQueueByName(String name){
+        return messages.get(getAddressByName(name));
+    }
 
 	public void execForAbonent(Address abonent){
 		ConcurrentLinkedQueue<Msg> messageQueue=messages.get(abonent);

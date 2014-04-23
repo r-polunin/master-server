@@ -1,6 +1,6 @@
 package main;
 
-import messagesystem.MessageSystemImpl;
+import messageSystem.MessageSystemImpl;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -23,12 +23,12 @@ import frontend.WebSocketImpl;
 import frontend.WebSocketServletImpl;
 
 import frontend.FrontendImpl;
-import gamemechanic.GameMechanicImpl;
+import gameMechanic.GameMechanicImpl;
 
 import datebase.DataAccessObject;
 import chat.GameChat;
-import gamemechanic.GameMechanic;
-import messagesystem.MessageSystem;
+import gameMechanic.GameMechanic;
+import messageSystem.MessageSystem;
 import frontend.UserData;
 
 public class Main{

@@ -1,7 +1,6 @@
 package messageSystem;
 
-import base.Abonent;
-import base.GameChat;
+import chat.GameChat;
 
 
 public abstract class MsgToGameChat extends Msg{
@@ -10,7 +9,7 @@ public abstract class MsgToGameChat extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
+	public void exec(Msg abonent){
 		if (abonent instanceof GameChat){
 			exec((GameChat)abonent);
 		}

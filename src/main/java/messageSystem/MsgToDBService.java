@@ -1,7 +1,6 @@
 package messageSystem;
 
-import base.Abonent;
-import base.DataAccessObject;
+import datebase.DataAccessObject;
 
 
 public abstract class MsgToDBService extends Msg{
@@ -10,7 +9,7 @@ public abstract class MsgToDBService extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
+	public void exec(Address abonent){
 		if (abonent instanceof DataAccessObject){
 			exec((DataAccessObject)abonent);
 		}

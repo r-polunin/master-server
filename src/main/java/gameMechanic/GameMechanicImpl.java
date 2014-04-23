@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import messageSystem.Address;
-import base.GameMechanic;
 import messageSystem.MessageSystem;
 
 import datebase.UserDataSet;
@@ -26,7 +25,7 @@ public class GameMechanicImpl implements GameMechanic{
 	public GameMechanicImpl(MessageSystem msgSystem){
 		address=new Address();
 		messageSystem=msgSystem;
-		messageSystem.addService(this,"GameMechanic");
+		messageSystem.addService(address,"GameMechanic");
 	}
 
 	public Address getAddress(){
@@ -207,7 +206,7 @@ public class GameMechanicImpl implements GameMechanic{
 	
 	public void run(){
 		while(true){
-			messageSystem.execForAbonent(this);
+			messageSystem.execForAbonent(address);
 			removeDeadGames();
 			TimeHelper.sleep(200);
 		}

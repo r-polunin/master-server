@@ -1,9 +1,9 @@
 package chat;
 
-import messagesystem.Abonent;
-import messagesystem.MessageSystem;
+import messageSystem.MessageSystem;
 
-public interface GameChat extends Runnable, Abonent {
+public interface GameChat extends Runnable {
 	public MessageSystem getMessageSystem();
 	public void createChat(String sessionId1, String sessionId2);
+    //public abstract void exec(GameChat gameChat);
 }

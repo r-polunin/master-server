@@ -1,7 +1,7 @@
 package gameMechanic.Stroke;
 
 import messageSystem.Address;
-import base.UserData;
+import frontend.UserData;
 import messageSystem.MsgToUserData;
 
 public class MsgPartyEnd extends MsgToUserData{

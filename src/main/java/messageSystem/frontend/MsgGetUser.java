@@ -2,7 +2,7 @@ package messageSystem.frontend;
 
 import datebase.UserDataSet;
 import messageSystem.Address;
-import base.DataAccessObject;
+import datebase.DataAccessObject;
 import messageSystem.MsgToDBService;
 
 

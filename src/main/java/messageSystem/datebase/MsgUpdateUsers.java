@@ -4,7 +4,7 @@ import java.util.List;
 
 import datebase.UserDataSet;
 import messageSystem.Address;
-import base.DataAccessObject;
+import datebase.DataAccessObject;
 import messageSystem.MsgToDBService;
 
 public class MsgUpdateUsers extends MsgToDBService{

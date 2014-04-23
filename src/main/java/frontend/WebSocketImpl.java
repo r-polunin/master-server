@@ -60,7 +60,6 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 	@Override
 	public void onWebSocketText(String message) {
 		if (isNotConnected()) {
-			return; 
 		}
 		String sessionId=null,startServerTime=null;
 		int from_x=-1, from_y=-1, to_x=-1, to_y=-1;
@@ -118,25 +117,28 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 			System.err.println(e.getMessage());
 		}
 	}
-    private void setColorDependOnUser(String sessionId, String color) throws IOException {
+    private boolean setColorDependOnUser(String sessionId, String color) throws IOException {
         String black="{\"color\":\"black\"}",white="{\"color\":\"white\"}";
         UserDataSet userSession=UserDataImpl.getLogInUserBySessionId(sessionId);
         if(color=="black"){
             userSession.setColor("b");
             UserDataImpl.getWSBySessionId(sessionId).sendString(black);
+            return true;
         }
         else if(color=="white"){
             userSession.setColor("w");
             UserDataImpl.getWSBySessionId(sessionId).sendString(white);
+            return true;
         }
+        return false;
     }
 
-	public void updateUsersColor(Map<String, String> usersToColors) {
+	public boolean updateUsersColor(Map<String, String> usersToColors) {
         String color;
 		for(String sessionId:usersToColors.keySet()){
 			try{
 				color=usersToColors.get(sessionId);
-                setColorDependOnUser(sessionId, color);
+                return setColorDependOnUser(sessionId, color);
 			}
 			catch(Exception e){
 				System.err.println("\nError:");
@@ -144,6 +146,7 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 				System.err.println(e.getMessage());
 			}
 		}
+        return false;
 	}
 
 	public void doneSnapshot(int userId, Snapshot snapshot) {

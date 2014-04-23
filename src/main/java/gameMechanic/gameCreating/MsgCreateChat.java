@@ -1,7 +1,7 @@
 package gameMechanic.gameCreating;
 
 import messageSystem.Address;
-import base.GameChat;
+import chat.GameChat;
 import messageSystem.MsgToGameChat;
 
 public class MsgCreateChat extends MsgToGameChat{

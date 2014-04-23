@@ -3,7 +3,7 @@ package gameMechanic.Stroke;
 import gameClasses.Snapshot;
 
 import messageSystem.Address;
-import base.WebSocket;
+import frontend.WebSocket;
 import messageSystem.MsgToWebSocket;
 
 

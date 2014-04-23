@@ -1,6 +1,4 @@
 package messageSystem;
-
-import base.Abonent;
 import frontend.Frontend;
 
 
@@ -10,7 +8,7 @@ public abstract class MsgToFrontend extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
+	public void exec(Address abonent){
 		if (abonent instanceof Frontend){
 			exec((Frontend)abonent);
 		}

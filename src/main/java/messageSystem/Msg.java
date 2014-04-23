@@ -1,9 +1,7 @@
 package messageSystem;
 
 
-import frontend.UserDataImpl;
-
-public abstract class Msg{
+public abstract class Msg {
 	final private Address from,to;
 
 	public Msg(Address from,Address to){
@@ -19,5 +17,5 @@ public abstract class Msg{
 		return to;
 	}
 
-	public abstract void exec(Address abonent);
+    //public abstract void exec(Address abonent);
 }

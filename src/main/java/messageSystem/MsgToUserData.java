@@ -1,7 +1,6 @@
 package messageSystem;
 
-import base.Abonent;
-import base.UserData;
+import frontend.UserData;
 
 
 public abstract class MsgToUserData extends Msg{
@@ -10,7 +9,7 @@ public abstract class MsgToUserData extends Msg{
 		super(from,to);
 	}
 
-	public void exec(Abonent abonent){
+	public void exec(Address abonent){
 		if (abonent instanceof UserData){
 			exec((UserData)abonent);
 		}

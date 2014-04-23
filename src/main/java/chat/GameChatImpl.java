@@ -7,8 +7,8 @@ import java.util.Vector;
 
 import utils.TimeHelper;
 
-import messagesystem.Address;
-import messagesystem.MessageSystem;
+import messageSystem.Address;
+import messageSystem.MessageSystem;
 
 import datebase.UserDataSet;
 
@@ -25,7 +25,7 @@ public class GameChatImpl implements GameChat{
 
 	public GameChatImpl(MessageSystem messageSystem){
 		this.messageSystem = messageSystem;
-		messageSystem.addService(this, "GameChat");
+		messageSystem.addService(address, "GameChat");
 	}
 
 	public Address getAddress(){
@@ -57,7 +57,7 @@ public class GameChatImpl implements GameChat{
 
 	public void run(){
 		while(true){
-			messageSystem.execForAbonent(this);
+			messageSystem.execForAbonent(address);
 			TimeHelper.sleep(200);
 		}
 	}

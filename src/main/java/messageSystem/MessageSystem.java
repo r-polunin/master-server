@@ -13,4 +13,5 @@ public interface MessageSystem{
 	public Address getAddressByName(String name);
 	public void putMsg(Address to,Msg msg);
 	public void execForAbonent(Address abonent);
+    public ConcurrentLinkedQueue<Msg> getMsgQueueByName(String gameMechanic);
 }
