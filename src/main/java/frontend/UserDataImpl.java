@@ -55,7 +55,9 @@ public class UserDataImpl implements UserData{
 	public static UserDataSet getUserSessionBySessionId(String sessionId){
 		return sessionIdToUserSession.get(sessionId);
 	}
-
+    public static boolean containsSessionIdInSITCWS(String sessionId){
+        return sessionIdToChatWS.containsKey(sessionId);
+    }
 	public static boolean containsSessionId(String sessionId){
 		return sessionIdToUserSession.containsKey(sessionId);
 	}

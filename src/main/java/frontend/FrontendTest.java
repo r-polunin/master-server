@@ -31,17 +31,6 @@ public class FrontendTest {
     }
 
     @Test
-    public void testCreateNewSession() {
-        String sessionId = null;
-        String strStartServerTime = null;
-        UserDataSet userSession = new UserDataSet();
-        MessageSystem ms = new MessageSystemImpl();
-        FrontendImpl frontendImpl = new FrontendImpl(ms);
-        frontendImpl.createNewSession(sessionId, strStartServerTime, userSession);
-        Assert.assertTrue(UserDataImpl.containsSessionId(sessionId));
-    }
-
-    @Test
     public void testSendInvalidRequest() throws IOException {
         String target = "/invalidTarget";
         UserDataSet userSession = new UserDataSet();

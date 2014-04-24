@@ -40,18 +40,6 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 		return address;
 	}
 
-    private void parseStringMessage(String message, JSONObject json, String sessionId, String startServerTime,
-                                    int from_x, int from_y, int to_x, int to_y, String status) throws ParseException {
-        JSONParser parser = new JSONParser();
-        json = (JSONObject) parser.parse(message);
-        sessionId=json.get("sessionId").toString();
-        startServerTime=json.get("startServerTime").toString();
-        from_x=Integer.parseInt(json.get("from_x").toString());
-        from_y=Integer.parseInt(json.get("from_y").toString());
-        to_x=Integer.parseInt(json.get("to_x").toString());
-        to_y=Integer.parseInt(json.get("to_y").toString());
-        status=json.get("status").toString();
-    }
     private boolean isConnectedRightNow(String sessionId, String startServerTime,
                                         int from_x, int from_y, int to_x, int to_y){
         return ((from_x!=-1)&&(from_y!=-1)&&(to_x!=-1)&&(to_y!=-1)&&(sessionId!=null)&&
@@ -66,11 +54,21 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 		String status=null;
 		JSONObject json=null;
 		try{
-            parseStringMessage(message, json, sessionId, startServerTime, from_x, from_y, to_x, to_y, status);
+            JSONParser parser = new JSONParser();
+            json = (JSONObject) parser.parse(message);
+            sessionId=json.get("sessionId").toString();
+            startServerTime=json.get("startServerTime").toString();
+            from_x=Integer.parseInt(json.get("from_x").toString());
+            from_y=Integer.parseInt(json.get("from_y").toString());
+            to_x=Integer.parseInt(json.get("to_x").toString());
+            to_y=Integer.parseInt(json.get("to_y").toString());
+            status=json.get("status").toString();
 		}
 		catch (ParseException parseException) {
+            sessionId = parseException.getMessage();
 		}
 		catch (Exception ignor){
+            sessionId = ignor.getMessage();
 		}
 		if(isConnectedRightNow(sessionId, startServerTime, from_x, from_y, to_x, to_y)){
 			checkStroke(sessionId, to_x, to_y, from_x, from_y, status);
@@ -120,12 +118,12 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
     private boolean setColorDependOnUser(String sessionId, String color) throws IOException {
         String black="{\"color\":\"black\"}",white="{\"color\":\"white\"}";
         UserDataSet userSession=UserDataImpl.getLogInUserBySessionId(sessionId);
-        if(color=="black"){
+        if(color==black){
             userSession.setColor("b");
             UserDataImpl.getWSBySessionId(sessionId).sendString(black);
             return true;
         }
-        else if(color=="white"){
+        else if(color==white){
             userSession.setColor("w");
             UserDataImpl.getWSBySessionId(sessionId).sendString(white);
             return true;

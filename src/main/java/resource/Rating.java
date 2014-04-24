@@ -9,6 +9,12 @@ public class Rating  implements Serializable,Resource{
 	static int avgDiff;
 	static int minDiff;
 
+    public static void setRatingFields(int max, int min, int avg,int dT){
+        decreaseThreshold = dT;
+        avgDiff = avg;
+        maxDiff = max;
+        minDiff = min;
+    }
 	public static int getAvgDiff(){
 		return avgDiff;
 	}

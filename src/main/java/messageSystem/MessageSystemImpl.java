@@ -32,7 +32,7 @@ public class MessageSystemImpl implements MessageSystem{
 		ConcurrentLinkedQueue<Msg> messageQueue=messages.get(abonent);
 		while(!messageQueue.isEmpty()){
 			Msg message=messageQueue.poll();
-			message.exec(abonent);
+			//message.exec(abonent);
 		}
 	}
 }

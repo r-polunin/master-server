@@ -53,7 +53,9 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
         baseRequest.setHandled(true);
 
         if(isNewUser(sessionId, strStartServerTime)){
-            createNewSession(sessionId,strStartServerTime,userSession);
+            sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
+            strStartServerTime=UserDataImpl.getStartServerTime();
+            UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
         }
         else{
             stat=status.haveCookie;
@@ -104,12 +106,6 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
             }
         }
         return false;
-    }
-
-    void createNewSession(String sessionId,String strStartServerTime, UserDataSet userSession) {
-        sessionId=SHA2.getSHA2(String.valueOf(creatorSessionId.incrementAndGet()));
-        strStartServerTime=UserDataImpl.getStartServerTime();
-        UserDataImpl.putSessionIdAndUserSession(sessionId, userSession);
     }
 
 	private void getStatistic(HttpServletResponse response, UserDataSet userSession){
@@ -187,7 +183,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 				data.put("nick", "Noname");
 				data.put("rating", "500");
 			}
-			TemplateHelper.renderTemplate("template.html", data, response.getWriter());
+			TemplateHelper.renderTemplate("static/html/template.html", data, response.getWriter());
 		} 
 		catch (IOException ignor) {
 		}

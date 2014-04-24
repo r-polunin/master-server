@@ -1,10 +1,13 @@
 package frontend;
 
 import datebase.UserDataSet;
+import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import resource.Rating;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -28,6 +31,11 @@ public class UserDataTest {
     public void testIsGameCreated() {
         MessageSystem ms = new MessageSystemImpl();
         UserDataImpl userDataImpl = new UserDataImpl(ms);
+        String sessionId = "100";
+        String serviceName = "gameMechanic";
+        UserDataSet userSession = mock(UserDataSet.class);
+        ms.addService(new Address(),serviceName);
+        UserDataImpl.playerWantToPlay(sessionId,userSession);
         Assert.assertTrue(userDataImpl.createGames());
     }
 
@@ -41,12 +49,15 @@ public class UserDataTest {
         String loseSessionId = "202";
         int winRating = 435;
         int loseRating = 267;
-        when(UserDataImpl.getSessionIdByUserId(winId)).thenReturn(winSessionId);
-        when(UserDataImpl.getSessionIdByUserId(loseId)).thenReturn(loseSessionId);
+        Rating.setRatingFields(173,24,145,10);
+        String serviceName = "DBService";
+        ms.addService(new Address(),serviceName);
         UserDataSet winUserSession = new UserDataSet(winId,"winner",winRating,41,4);
         UserDataSet loseUserSession = new UserDataSet(loseId,"loser",loseRating,13,25);
-        when(UserDataImpl.getUserSessionBySessionId(winSessionId)).thenReturn(winUserSession);
-        when(UserDataImpl.getUserSessionBySessionId(loseSessionId)).thenReturn(loseUserSession);
+        UserDataImpl.putSessionIdAndUserSession(winSessionId,winUserSession);
+        UserDataImpl.putSessionIdAndUserSession(loseSessionId, loseUserSession);
+        UserDataImpl.putLogInUser(winSessionId, winUserSession);
+        UserDataImpl.putLogInUser(loseSessionId,loseUserSession);
         Assert.assertTrue(userDataImpl.partyEnd(winId, loseId));
     }
 }

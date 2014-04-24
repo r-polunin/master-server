@@ -1,5 +1,6 @@
 package chat;
 
+import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,11 +15,7 @@ public class ChatWSImpl  extends WebSocketAdapter{
 	}
 
     private void parseJson(String message, String sessionId, String startServerTime, String text) throws ParseException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(message);
-        sessionId=json.get("sessionId").toString();
-        startServerTime=json.get("startServerTime").toString();
-        text=json.get("text").toString();
+
     }
     private boolean isChaterValid(String sessionId, String startServerTime) {
         return ((sessionId!=null)&&
@@ -34,16 +31,21 @@ public class ChatWSImpl  extends WebSocketAdapter{
 
 	@Override
 	public void onWebSocketText(String message) {
-		if (isNotConnected()) {
+/*		if (isNotConnected()) {
 			return; 
-		}
+		}*/
 		String sessionId=null,startServerTime=null;
 		String text=null;
 		try{
 
-            parseJson(message,sessionId,startServerTime,text);
+            JSONParser parser = new JSONParser();
+            JSONObject json = (JSONObject) parser.parse(message);
+            sessionId=json.get("sessionId").toString();
+            startServerTime=json.get("startServerTime").toString();
+            text=json.get("text").toString();
 		}
 		catch (Exception ignor){
+            sessionId = ignor.getMessage();
 		}
 		if(isChatTextValid(sessionId, startServerTime, text)){
 			addMessageToChat(sessionId, text);
