@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f8aa6b1-f74a-4c24-b25a-0035ac143e34" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameClasses/Field.java" afterPath="$PROJECT_DIR$/src/main/java/gameClasses/Field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gameMechanic/GameSession.java" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/GameSession.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/CookieDescriptorTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/chat/GameChatTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/GameMechanic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/gameMechanic/GameSessionTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/VFSTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frontend/WebSocketTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="java-server.iws" />
@@ -104,7 +107,7 @@
       <file leaf-file-name="GameSession.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/GameSession.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="20" selection-start="3726" selection-end="3726" vertical-scroll-proportion="-2.2156198" vertical-offset="2010" max-vertical-offset="6975">
+            <state line="275" column="61" selection-start="8170" selection-end="8170" vertical-scroll-proportion="0.66213924" vertical-offset="2100" max-vertical-offset="6975">
               <folding>
                 <element signature="initializer##0;class#GameSession#0" expanded="false" />
                 <element signature="method#GameSession#0;class#GameSession#0" expanded="false" />
@@ -1411,7 +1414,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gameMechanic/GameSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="20" selection-start="3726" selection-end="3726" vertical-scroll-proportion="-2.2156198" vertical-offset="2010" max-vertical-offset="6975">
+        <state line="275" column="61" selection-start="8170" selection-end="8170" vertical-scroll-proportion="0.66213924" vertical-offset="2100" max-vertical-offset="6975">
           <folding>
             <element signature="initializer##0;class#GameSession#0" expanded="false" />
             <element signature="method#GameSession#0;class#GameSession#0" expanded="false" />
