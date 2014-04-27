@@ -40,6 +40,9 @@ public class GameSession{
 		settings = new GameSettings(fieldSize,playerSize);
 		descInit(id1, id2);
 	}
+    public Field[][] getDesc() {
+        return currentPositions;
+    }
 
 	private void descInit(int id1, int id2) {
 		currentPositions = new Field[settings.getFieldSize()][settings.getFieldSize()];

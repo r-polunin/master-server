@@ -8,6 +8,10 @@ public class Field{
 	public Field(checker t){
 		type=t;
 	}
+    public boolean equals(Field f) {
+        if (this.type == f.type) return true;
+        else return false;
+    }
 	
 	public Field(){
 		type=checker.nothing;
