@@ -18,6 +18,7 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
+                    <check/>
                 </configuration>
             </plugin>
             <plugin>
@@ -193,6 +194,11 @@
             <artifactId>guice</artifactId>
             <version>3.0</version>
             <classifier>no_aop</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.4.Final</version>
         </dependency>
     </dependencies>
 

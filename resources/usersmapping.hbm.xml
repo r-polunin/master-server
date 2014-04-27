@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="database.UserModel" table="users">
+        <id column="id" name="id" type="int">
+            <generator class="native">
+            </generator></id>
+        <property name="nickname">
+            <column name="nickname">
+            </column></property>
+        <property name="password">
+            <column name="password">
+            </column></property>
+        <property name="lastVisit">
+            <column name="last_visit">
+            </column></property>
+        <property name="registrationDate">
+            <column name="registration_date">
+            </column></property>
+        <property name="rating">
+            <column name="rating">
+            </column></property>
+        <property name="winQuantity">
+            <column name="win_quantity">
+            </column></property>
+        <property name="loseQuantity">
+            <column name="lose_quantity">
+            </column></property>
+    </class>
+</hibernate-mapping>

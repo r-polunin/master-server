@@ -5,9 +5,11 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.hibernate.Session;
 import utils.TimeHelper;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
@@ -32,37 +34,100 @@ public class DBServiceImpl implements DataAccessObject{
 	}
 
 	public UserDataSet getUDS(final String login, String password){
-		UserDataSet user = TExecutor.getUDS(connection, login, password,
-				new TResultHandler<UserDataSet>(){
-			@Override
-			public UserDataSet handle(ResultSet result){
-				try {
-					if(result.first()){
-						int id = result.getInt("id");
-						int rating = result.getInt("rating");
-						int winQuantity = result.getInt("win_quantity");
-						int loseQuantity = result.getInt("lose_quantity");
-						return new UserDataSet(id,login,rating,winQuantity,loseQuantity);
-					}
-				} 
-				catch (SQLException e) {
-					System.err.println("\nError");
-					System.err.println("DBServiceImpl, addUDS");
-					System.err.println(e.getMessage());
-				}
-				return null;
-			}
-		});
-		return user;
-	}
-	
-	public boolean addUDS(final String login,String password){
-		int rows = TExecutor.findUser(connection, login);
-		if(rows==0)
-			TExecutor.addUser(connection, login, password);
-		return (rows==0);
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            String HQL_QUERY = "from UserModel users where users.nickname = :nickname, users.password = :password";
+            org.hibernate.Query query = session.createQuery(HQL_QUERY);
+            query.setParameter("nickname", login);
+            query.setParameter("password", password);
+
+            for (Iterator it = query.iterate(); it.hasNext(); ) {
+                UserModel user = (UserModel) it.next();
+                return getUserDataSetByUserModel(user);
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            //Debug mode on
+            System.out.println("DBServiceImpl something went wrong: " + e.getMessage());
+        } finally {
+            if (session != null) {
+                session.flush();
+                session.close();
+            }
+        }
+        return null;
 	}
 
+    private UserDataSet getUserDataSetByUserModel(UserModel userModel) {
+        int id = userModel.getId();
+        String login = userModel.getNickname();
+        int rating = userModel.getRating();
+        int winQuantity = userModel.getWinQuantity();
+        int loseQuantity = userModel.getLoseQuantity();
+        return new UserDataSet(id,login,rating,winQuantity,loseQuantity);
+    }
+
+	public boolean addUDS(final String login,String password){
+        Session session = null;
+        //TODO: tmp block, solution: unique database nickname field and exception handling;
+        try {
+            if (readUserByLogin(login) != null) {
+                //TODO: custom exception
+                throw new Exception((new StringBuilder("User ")).append(login).append(" is already exist").toString());
+            }
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            UserModel user = new UserModel();
+            user.setNickname(login);
+            user.setPassword(password);
+
+            session.save(user);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            //Debug mode on
+            System.out.println("DBServiceImpl something went wrong: " + e.getMessage());
+            return false;
+        } finally {
+            if (session != null) {
+                session.flush();
+                session.close();
+            }
+        }
+	}
+
+    //TODO: getUds refactoring
+    private UserModel readUserByLogin(String login) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            String HQL_QUERY = "from UserModel users where users.nickname = :nickname";
+            org.hibernate.Query query = session.createQuery(HQL_QUERY);
+            query.setParameter("nickname", login);
+
+            for (Iterator it = query.iterate(); it.hasNext(); ) {
+                UserModel user = (UserModel) it.next();
+                return user;
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            //Debug mode on
+            System.out.println("DBServiceImpl something went wrong: " + e.getMessage());
+        } finally {
+            if (session != null) {
+                session.flush();
+                session.close();
+            }
+        }
+        return null;
+    }
+    /*
 	public void updateUsers(List<UserDataSet> users){
 		ListIterator<UserDataSet> li = users.listIterator();
 		while(li.hasNext()){
@@ -74,8 +139,31 @@ public class DBServiceImpl implements DataAccessObject{
 			TExecutor.updateUser(connection, login, rating, winQuantity, loseQuantity);
 		}
 	}
+	*/
 
-	public void run(){
+    private void updateUser(UserModel user) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(user);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            //Debug mode on
+            System.out.println("DBServiceImpl something went wrong: " + e.getMessage());
+        } finally {
+            if (session != null) {
+                session.flush();
+                session.close();
+            }
+        }
+
+    }
+
+    public void run(){
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
