@@ -22,6 +22,10 @@ public class GameMechanicImpl implements GameMechanic{
 	final private Address address;
 	final private MessageSystem messageSystem;
 
+    public Map<String, UserDataSet> getWantToPlay(){
+        return wantToPlay;
+    }
+
 	public GameMechanicImpl(MessageSystem msgSystem){
 		address=new Address();
 		messageSystem=msgSystem;
@@ -108,7 +112,8 @@ public class GameMechanicImpl implements GameMechanic{
 		if(users.size()%2==1)
 			moveUser(users);
 		String[] keys = Caster.castKeysToStrings(users);
-		for(int count=0;count<users.size()/2;count++){
+        int currentUserSize = users.size()/2;
+		for(int count=0;count<currentUserSize;count++){
 			if(randomMod2()==1){
 				sessionIdBlack = keys[count*2];
 				sessionIdWhite = keys[count*2+1];
