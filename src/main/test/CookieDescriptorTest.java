@@ -1,6 +1,5 @@
-package utils;
-
 import org.testng.annotations.Test;
+import utils.CookieDescriptor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

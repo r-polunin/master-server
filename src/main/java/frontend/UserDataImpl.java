@@ -118,7 +118,7 @@ public class UserDataImpl implements UserData{
 			return sessionIdToChatWS.get(sessionId).getSession().getRemote();
 	}
 
-	String getOldUserSessionId(int id){
+    public String getOldUserSessionId(int id){
 		for(String sessionId:logInUsers.keySet()){
 			if(logInUsers.get(sessionId).getId()==id)
 				return sessionId;
@@ -137,7 +137,7 @@ public class UserDataImpl implements UserData{
 		getUserSessionBySessionId(sessionId).setPostStatus(0);
 	}
 
-	boolean createGames() {
+    public boolean createGames() {
 		Map<String,UserDataSet> sendMap = 
 				new ConcurrentHashMap<String, UserDataSet>();
 		String[] keys = Caster.castKeysToStrings(wantToPlay);

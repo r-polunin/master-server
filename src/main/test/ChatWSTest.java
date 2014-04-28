@@ -1,5 +1,6 @@
-package chat;
-
+import chat.ChatMessage;
+import chat.ChatWSImpl;
+import chat.GameChatImpl;
 import datebase.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystemImpl;
@@ -33,7 +34,7 @@ public class ChatWSTest {
         chatWS.onWebSocketText(message);
         List<ChatMessage> q = gchat.getChatMessageQueueBySessionId(senderSessionId);
         ChatMessage cm = q.get(0);
-        Assert.assertEquals(cm.text,text);
+        Assert.assertEquals(cm.getMessage(),text);
     }
 
     @Test

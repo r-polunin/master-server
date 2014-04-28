@@ -1,6 +1,5 @@
-package gameMechanic;
-
 import gameClasses.Field;
+import gameMechanic.GameSession;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.VFS;

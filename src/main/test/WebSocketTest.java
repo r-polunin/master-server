@@ -1,6 +1,6 @@
-package frontend;
-
 import datebase.UserDataSet;
+import frontend.UserDataImpl;
+import frontend.WebSocketImpl;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
@@ -30,7 +30,7 @@ public class WebSocketTest {
         MessageSystem ms = new MessageSystemImpl();
         webSocket.setMS(ms);
         String message="{\"sessionId\": 100," +
-                "\"startServerTime\": " + "\""+UserDataImpl.getStartServerTime()+"\""+","+
+                "\"startServerTime\": " + "\""+ UserDataImpl.getStartServerTime()+"\""+","+
                 "\"from_x\": 1," +
                 "\"from_y\": 1," +
                 "\"to_x\": 2," +

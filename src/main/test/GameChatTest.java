@@ -1,5 +1,4 @@
-package chat;
-
+import chat.GameChatImpl;
 import datebase.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystem;
@@ -27,6 +26,6 @@ public class GameChatTest {
         String text = "Brave New World";
         gameChat.createChat(sessionId1,sessionId2);
         GameChatImpl.sendMessage(sessionId1,text);
-        Assert.assertEquals(gameChat.getChatMessageQueueBySessionId(sessionId1).get(0).text,text);
+        Assert.assertEquals(gameChat.getChatMessageQueueBySessionId(sessionId1).get(0).getMessage(),text);
     }
 }

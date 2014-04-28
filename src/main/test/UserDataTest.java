@@ -1,6 +1,5 @@
-package frontend;
-
 import datebase.UserDataSet;
+import frontend.UserDataImpl;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
