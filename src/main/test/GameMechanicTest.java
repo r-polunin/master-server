@@ -1,4 +1,4 @@
-import datebase.UserDataSet;
+import database.UserDataSet;
 import gameClasses.Field;
 import gameClasses.Stroke;
 import gameMechanic.GameMechanicImpl;
@@ -8,6 +8,7 @@ import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testingUtils.TestingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,11 +24,11 @@ public class GameMechanicTest {
         GameMechanicImpl gm = new GameMechanicImpl(ms);
         ms.addService(new Address(),"GameChat");
         Map<String,UserDataSet> users = new HashMap<String, UserDataSet>();
-        UserDataSet user1 = new UserDataSet(1,"dmitry",20,10,5);
-        UserDataSet user2 = new UserDataSet(2,"alexander",20,10,5);
-        UserDataSet user3 = new UserDataSet(3,"pavel",20,10,5);
-        UserDataSet user4 = new UserDataSet(4,"alexey",20,10,5);
-        UserDataSet user5 = new UserDataSet(5,"andrey",20,10,5);
+        UserDataSet user1 = TestingUtils.getUserDataSet(1,"dmitry",20,10,5);
+        UserDataSet user2 = TestingUtils.getUserDataSet(2,"alexander",20,10,5);
+        UserDataSet user3 = TestingUtils.getUserDataSet(3,"pavel",20,10,5);
+        UserDataSet user4 = TestingUtils.getUserDataSet(4,"alexey",20,10,5);
+        UserDataSet user5 = TestingUtils.getUserDataSet(5,"andrey",20,10,5);
         users.put("100",user1);
         users.put("101",user2);
         users.put("102",user3);
@@ -46,7 +47,7 @@ public class GameMechanicTest {
         GameMechanicImpl gm = new GameMechanicImpl(ms);
         ms.addService(new Address(),"GameChat");
         Map<String,UserDataSet> users = new HashMap<String, UserDataSet>();
-        UserDataSet user1 = new UserDataSet(1,"dmitry",20,10,5);
+        UserDataSet user1 = TestingUtils.getUserDataSet(1,"dmitry",20,10,5);
         users.put("100",user1);
         gm.createGames(users);
         gm.removeUser("100");

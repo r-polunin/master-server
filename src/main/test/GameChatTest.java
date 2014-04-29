@@ -1,5 +1,5 @@
 import chat.GameChatImpl;
-import datebase.UserDataSet;
+import database.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;

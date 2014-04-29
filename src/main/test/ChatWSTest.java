@@ -1,6 +1,8 @@
-package chat;
 
-import datebase.UserDataSet;
+import chat.ChatMessage;
+import chat.ChatWSImpl;
+import chat.GameChatImpl;
+import database.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystemImpl;
 import org.eclipse.jetty.websocket.api.Session;
@@ -14,7 +16,8 @@ import java.util.List;
  * Created by dmitry on 23.04.14.
  */
 public class ChatWSTest {
-      @Test
+
+    @Test
       public void testSendMessageToChat(){
         MessageSystemImpl ms = new MessageSystemImpl();
         GameChatImpl gchat = new GameChatImpl(ms);
