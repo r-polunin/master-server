@@ -28,24 +28,6 @@ public class VFS{
 			return (dir+path);
 	}
 
-	public static String getBytes(String path) {
-		path=getAbsolutePath(path);
-		try {
-			File f = new File(path);
-			FileReader fr = new FileReader(f);
-			char[] buffer = null;		
-			fr.read(buffer);
-			fr.close();
-			return String.valueOf(buffer);
-		}
-		catch (Exception e) {
-			System.err.println("\nError");
-			System.err.println("VFS, getBytes");
-			System.err.println(e.getMessage());
-		}
-		return null;	
-	}
-
 	public static String getRelativePath(String path){
 		if(isAbsolute(path)){
 			return path.substring(dir.length());

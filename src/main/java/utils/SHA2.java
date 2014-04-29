@@ -22,10 +22,6 @@ public class SHA2 {
         return sb.toString();
     }
 
-	public static String getSHA2(int password){
-		return getSHA2(String.valueOf(password));
-	}
-	
 	public static String getSHA2(long password){
 		return getSHA2(String.valueOf(password));
 	}
