@@ -1,6 +1,6 @@
 package frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
@@ -8,13 +8,11 @@ import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.common.WebSocketRemoteEndpoint;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.TimeHelper;
+import testingUtils.TestingUtils;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
@@ -37,7 +35,7 @@ public class WebSocketTest {
                 "\"to_y\": 2," +
                 "\"status\": \"somestatus\"}";
         String serviceName = "GameMechanic";
-        UserDataSet user = new UserDataSet(10,"dmitry",1,1,1);
+        UserDataSet user = TestingUtils.getUserDataSet(10, "dmitry", 1, 1, 1);
         UserDataImpl.putLogInUser("100",user);
         ms.addService(new Address(),serviceName);
         webSocket.onWebSocketText(message);

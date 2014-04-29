@@ -6,7 +6,7 @@ import java.util.Map;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import gameClasses.Snapshot;
 import gameClasses.Stroke;
 import gameMechanic.Stroke.*;

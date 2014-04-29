@@ -18,7 +18,7 @@ public class TimeHelper{
 	}
 	
 	public static long getCurrentTime(){
-		return System.currentTimeMillis()/1000;
+		return System.currentTimeMillis();
 	}
 	
 	public static String getGMT() {

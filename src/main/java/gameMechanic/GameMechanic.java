@@ -5,7 +5,7 @@ import gameClasses.Stroke;
 
 import java.util.Map;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 

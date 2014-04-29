@@ -1,11 +1,12 @@
 package chat;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystemImpl;
 import org.eclipse.jetty.websocket.api.Session;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testingUtils.TestingUtils;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ChatWSTest {
                 "\"sessionId\": "+senderSessionId+"," +
                 "\"startServerTime\": " + startServerTime+","+
                 "\"text\": \""+text+"\"}";
-        UserDataSet user = new UserDataSet(10,"dmitry",1,1,1);
+        UserDataSet user = TestingUtils.getUserDataSet(10, "dmitry", 1, 1, 1);
         chatWS.onWebSocketConnect(session);
         UserDataImpl.putLogInUser(senderSessionId,user);
         chatWS.onWebSocketText(message);

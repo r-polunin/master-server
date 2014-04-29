@@ -11,7 +11,7 @@ CREATE  TABLE IF NOT EXISTS `checkers`.`Users` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nickname` VARCHAR(20) NOT NULL ,
   `password` CHAR(64) NOT NULL,
-  `last_visit` TIMESTAMP NOT NULL,
+  `last_visit` TIMESTAMP NOT NULL DEFAULT,
   `registration_date` TIMESTAMP NOT NULL,
   `rating` SMALLINT NOT NULL DEFAULT 500,
   `win_quantity` INT UNSIGNED NOT NULL DEFAULT 0,

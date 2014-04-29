@@ -2,7 +2,7 @@ package gameMechanic.gameCreating;
 
 import java.util.Map;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 
 import messageSystem.Address;
 import gameMechanic.GameMechanic;

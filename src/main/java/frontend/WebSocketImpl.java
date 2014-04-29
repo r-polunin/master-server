@@ -13,7 +13,7 @@ import messageSystem.MessageSystem;
 
 import gameMechanic.Stroke.MsgCheckStroke;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import gameClasses.Snapshot;
 import gameClasses.Stroke;
 import utils.TimeHelper;

@@ -12,7 +12,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import chat.ChatWSServletImpl;
 import chat.GameChatImpl;
 
-import datebase.DBServiceImpl;
+import database.DBServiceImpl;
 
 import resource.ResourceFactory;
 
@@ -25,7 +25,7 @@ import frontend.WebSocketServletImpl;
 import frontend.FrontendImpl;
 import gameMechanic.GameMechanicImpl;
 
-import datebase.DataAccessObject;
+import database.DataAccessObject;
 import chat.GameChat;
 import gameMechanic.GameMechanic;
 import messageSystem.MessageSystem;

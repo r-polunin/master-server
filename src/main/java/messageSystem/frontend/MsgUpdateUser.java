@@ -1,6 +1,6 @@
 package messageSystem.frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 import frontend.UserData;
 import messageSystem.MsgToUserData;

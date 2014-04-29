@@ -1,10 +1,7 @@
-package datebase;
+package database;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -17,7 +14,6 @@ import messageSystem.MessageSystem;
 public class DBServiceImpl implements DataAccessObject{
 	private final MessageSystem messageSystem;
 	private final Address address;
-	private Connection connection;
 
 	public DBServiceImpl(MessageSystem msgSystem){
 		address=new Address();
@@ -39,7 +35,7 @@ public class DBServiceImpl implements DataAccessObject{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
-            String HQL_QUERY = "from UserModel users where users.nickname = :nickname, users.password = :password";
+            String HQL_QUERY = "from UserModel users where users.nickname = :nickname and users.password = :password";
             org.hibernate.Query query = session.createQuery(HQL_QUERY);
             query.setParameter("nickname", login);
             query.setParameter("password", password);
@@ -62,12 +58,7 @@ public class DBServiceImpl implements DataAccessObject{
 	}
 
     private UserDataSet getUserDataSetByUserModel(UserModel userModel) {
-        int id = userModel.getId();
-        String login = userModel.getNickname();
-        int rating = userModel.getRating();
-        int winQuantity = userModel.getWinQuantity();
-        int loseQuantity = userModel.getLoseQuantity();
-        return new UserDataSet(id,login,rating,winQuantity,loseQuantity);
+        return new UserDataSet(userModel);
     }
 
 	public boolean addUDS(final String login,String password){
@@ -84,6 +75,8 @@ public class DBServiceImpl implements DataAccessObject{
             UserModel user = new UserModel();
             user.setNickname(login);
             user.setPassword(password);
+            user.setLastVisit(new Timestamp(TimeHelper.getCurrentTime()));
+            user.setRegistrationDate(new Timestamp(TimeHelper.getCurrentTime()));
 
             session.save(user);
             session.getTransaction().commit();
@@ -127,19 +120,14 @@ public class DBServiceImpl implements DataAccessObject{
         }
         return null;
     }
-    /*
+
 	public void updateUsers(List<UserDataSet> users){
 		ListIterator<UserDataSet> li = users.listIterator();
 		while(li.hasNext()){
 			UserDataSet user = li.next();
-			String login = user.getNick();
-			int rating = user.getRating();
-			int winQuantity = user.getWinQuantity();
-			int loseQuantity = user.getLoseQuantity();
-			TExecutor.updateUser(connection, login, rating, winQuantity, loseQuantity);
+            updateUser(user.getModel());
 		}
 	}
-	*/
 
     private void updateUser(UserModel user) {
         Session session = null;
@@ -163,27 +151,29 @@ public class DBServiceImpl implements DataAccessObject{
 
     }
 
+    public void deleteUser(UserModel user) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(user);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            //Debug mode on
+            System.out.println("DBServiceImpl something went wrong: " + e.getMessage());
+        } finally {
+            if (session != null) {
+                session.flush();
+                session.close();
+            }
+        }
+    }
+
+
     public void run(){
-		try{
-			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
-			DriverManager.registerDriver(driver);
-		}
-		catch(Exception e){
-			System.err.println("\nError");
-			System.err.println("DBServiceImpl, run1");
-			System.err.println(e.getMessage());
-			System.exit(-1);
-		}
-		String url="jdbc:mysql://localhost:3306/checkers?user=root&password=";
-		try{
-			connection = DriverManager.getConnection(url);
-		}
-		catch(Exception e){
-			System.err.println("\nError");
-			System.err.println("DBServiceImpl, run2");
-			System.err.println(e.getMessage());
-			System.exit(-1);
-		}
 		while(true){
 			messageSystem.execForAbonent(address);
 			TimeHelper.sleep(200);

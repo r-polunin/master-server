@@ -1,6 +1,6 @@
 package messageSystem;
 
-import datebase.DataAccessObject;
+import database.DataAccessObject;
 
 
 public abstract class MsgToDBService extends Msg{

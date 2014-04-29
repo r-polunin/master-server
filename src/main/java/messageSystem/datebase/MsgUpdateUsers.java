@@ -2,9 +2,9 @@ package messageSystem.datebase;
 
 import java.util.List;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
-import datebase.DataAccessObject;
+import database.DataAccessObject;
 import messageSystem.MsgToDBService;
 
 public class MsgUpdateUsers extends MsgToDBService{

@@ -12,7 +12,7 @@ import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 import resource.Rating;
 import resource.TimeSettings;
 import chat.ChatWSImpl;
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import utils.Caster;

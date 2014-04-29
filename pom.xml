@@ -200,6 +200,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>4.1.4.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-orm</artifactId>
+            <version>3.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

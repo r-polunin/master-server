@@ -23,7 +23,7 @@ import utils.TimeHelper;
 
 import messageSystem.Address;
 import messageSystem.MessageSystem;
-import datebase.UserDataSet;
+import database.UserDataSet;
 
 
 public class FrontendImpl extends AbstractHandler implements Frontend{
@@ -183,7 +183,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 				data.put("nick", "Noname");
 				data.put("rating", "500");
 			}
-			TemplateHelper.renderTemplate("static/html/template.html", data, response.getWriter());
+			TemplateHelper.renderTemplate("template.html", data, response.getWriter());
 		} 
 		catch (IOException ignor) {
 		}

@@ -1,8 +1,8 @@
 package messageSystem.frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
-import datebase.DataAccessObject;
+import database.DataAccessObject;
 import messageSystem.MsgToDBService;
 
 

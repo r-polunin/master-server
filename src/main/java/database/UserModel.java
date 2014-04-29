@@ -1,11 +1,21 @@
-package datebase;
+package database;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class UserModel {
     private int id;
     private String nickname;
     private String password;
-    private long lastVisit;
-    private long registrationDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp lastVisit;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp registrationDate;
+
     private int rating;
     private int winQuantity;
     private int loseQuantity;
@@ -37,19 +47,19 @@ public class UserModel {
         this.password = password;
     }
 
-    public long getLastVisit() {
+    public Timestamp getLastVisit() {
         return lastVisit;
     }
 
-    public void setLastVisit(long lastVisit) {
+    public void setLastVisit(Timestamp lastVisit) {
         this.lastVisit = lastVisit;
     }
 
-    public long getRegistrationDate() {
+    public Timestamp getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(long registrationDate) {
+    public void setRegistrationDate(Timestamp registrationDate) {
         this.registrationDate = registrationDate;
     }
 
@@ -75,5 +85,17 @@ public class UserModel {
 
     public void setLoseQuantity(int loseQuantity) {
         this.loseQuantity = loseQuantity;
+    }
+
+    public void incrementLoseQuantity() {
+        this.loseQuantity++;
+    }
+
+    public void incrementWinQuantity() {
+        this.winQuantity++;
+    }
+
+    public void updateRating(int diff) {
+        this.rating += diff;
     }
 }

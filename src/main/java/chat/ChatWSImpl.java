@@ -1,11 +1,10 @@
 package chat;
 
-import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 
 import frontend.UserDataImpl;
 import org.json.simple.parser.ParseException;

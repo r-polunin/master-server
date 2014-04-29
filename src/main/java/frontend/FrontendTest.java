@@ -1,6 +1,6 @@
 package frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
 import org.testng.Assert;

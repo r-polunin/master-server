@@ -1,12 +1,13 @@
 package frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resource.Rating;
+import testingUtils.TestingUtils;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -52,8 +53,8 @@ public class UserDataTest {
         Rating.setRatingFields(173,24,145,10);
         String serviceName = "DBService";
         ms.addService(new Address(),serviceName);
-        UserDataSet winUserSession = new UserDataSet(winId,"winner",winRating,41,4);
-        UserDataSet loseUserSession = new UserDataSet(loseId,"loser",loseRating,13,25);
+        UserDataSet winUserSession = TestingUtils.getUserDataSet(winId, "winner", winRating, 41, 4);
+        UserDataSet loseUserSession = TestingUtils.getUserDataSet(loseId,"loser",loseRating,13,25);
         UserDataImpl.putSessionIdAndUserSession(winSessionId,winUserSession);
         UserDataImpl.putSessionIdAndUserSession(loseSessionId, loseUserSession);
         UserDataImpl.putLogInUser(winSessionId, winUserSession);

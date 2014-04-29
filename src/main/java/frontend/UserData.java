@@ -1,6 +1,6 @@
 package frontend;
 
-import datebase.UserDataSet;
+import database.UserDataSet;
 import messageSystem.Address;
 
 public interface UserData extends Runnable{
