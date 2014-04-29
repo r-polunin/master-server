@@ -19,31 +19,6 @@
                 </configuration>
             </plugin>
 
-            <!--<Копипаста>-->
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <includes>
-                        <include>**/VFSTest.java</include>
-                    </includes>
-                    <forkMode>always</forkMode>&lt;!&ndash; 'none' is so we can debug &ndash;&gt;
-                    <argLine>-enableassertions</argLine>
-                    &lt;!&ndash;
-                    <useManifestOnlyJar>false</useManifestOnlyJar>
-                    <useSystemClassLoader>true</useSystemClassLoader>
-                    &ndash;&gt;
-                    <suiteXmlFiles>
-                        <suiteXmlFile>
-                            ${basedir}/src/main/resources/testng-none.xml
-                        </suiteXmlFile>
-                    </suiteXmlFiles>
-
-                </configuration>
-
-            </plugin>
--->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
@@ -68,11 +43,6 @@
             </plugin>
         </plugins>
     </build>
-
-
-
-
-    <!--<Копипаста>-->
     <reporting>
         <plugins>
             <plugin>
@@ -88,51 +58,6 @@
             </plugin>
         </plugins>
     </reporting>
-
-
-    <!--</Копипаста>-->
-
-
-
-
-
-    <!--
-    <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>emma-maven-plugin</artifactId>
-                        <version>1.0-alpha-3</version>
-                        <inherited>true</inherited>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>surefire-report-maven-plugin</artifactId>
-                        <inherited>true</inherited>
-                    </plugin>
-                </plugins>
-            </reporting>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>main.Main</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>-->
-
     <repositories>
         <!-- Jetty Eclipse Repository -->
         <repository>
