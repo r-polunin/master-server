@@ -526,7 +526,7 @@ public class GameSession{
 		else
 			saveAILog("white");
 		String fileName="/log/"+dirForLog+"/"+String.valueOf(id)+".txt";
-		String data=log.toString()+"\n"+getSnapshot(whiteId).toStringTest();
+		String data=log.toString()+"\n"+getSnapshot(whiteId).toString();
 		VFS.writeToFile(fileName, data);
 		System.out.println("\nSave log for "+String.valueOf(id));
 	}

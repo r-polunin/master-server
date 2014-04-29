@@ -1,6 +1,8 @@
 import datebase.UserDataSet;
+import gameClasses.Field;
 import gameClasses.Stroke;
 import gameMechanic.GameMechanicImpl;
+import gameMechanic.GameSession;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
@@ -54,10 +56,27 @@ public class GameMechanicTest {
 
     @Test
     public void testIsStrokeCheckingRight(){
-        /*MessageSystemImpl ms = new MessageSystemImpl();
-        GameMechanicImpl gm = new GameMechanicImpl(ms);
-        Stroke stroke = new Stroke();
-        gm.checkStroke(1,stroke);*/
+        MessageSystemImpl ms = new MessageSystemImpl();
+        GameMechanicImpl gm1 = new GameMechanicImpl(ms);
+        GameMechanicImpl gm2 = new GameMechanicImpl(ms);
+        GameMechanicImpl gm3 = new GameMechanicImpl(ms);
+        ms.addService(new Address(),"UserData");
+        ms.addService(new Address(),"WebSocket");
+        Stroke stroke1 = new Stroke(3,2,4,1,"somestatus");
+        Map<Integer,Stroke> res1 = gm1.checkStroke(1,stroke1);
+        Stroke stroke2 = new Stroke(3,1,4,0,"lose");
+        GameSession gs2 = new GameSession(1,2);
+        gm2.getUserIdToSession().put(1,gs2);
+        Map<Integer,Stroke> res2 = gm2.checkStroke(1,stroke2);
+        GameSession gs3 = new GameSession(1,2,10,0);
+        gs3.getField(3,5).setType(Field.checker.nothing);
+        gs3.getField(4,8).setType(Field.checker.white);
+        gm3.getUserIdToSession().put(1,gs3);
+        Map<Integer,Stroke> res3 = gm3.checkStroke(1,stroke1);
+        Stroke res = res3.get(1);
+        Assert.assertTrue((res1==null) &&
+                (res2.size() == 2) &&
+                (res.getFrom_X()==4 && res.getFrom_Y()==1 && res.getTo_X()==3 && res.getTo_Y()==2));
 
     }
 }
