@@ -1,4 +1,4 @@
-import datebase.UserDataSet;
+import database.UserDataSet;
 import gameClasses.Field;
 import gameClasses.Stroke;
 import gameMechanic.GameMechanicImpl;
