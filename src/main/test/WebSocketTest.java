@@ -9,10 +9,13 @@ import org.eclipse.jetty.websocket.common.WebSocketRemoteEndpoint;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testingUtils.TestingUtils;
+import utils.TimeHelper;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
@@ -26,20 +29,30 @@ public class WebSocketTest {
     public void testSendStrokeMsgToGM(){
         WebSocketImpl webSocket = new WebSocketImpl();
         MessageSystem ms = new MessageSystemImpl();
+        String serviceName = "GameMechanic";
+        UserDataSet user = TestingUtils.getUserDataSet(10, "dmitry", 1, 1, 1);
         webSocket.setMS(ms);
-        String message="{\"sessionId\": 100," +
+        ms.addService(new Address(),serviceName);
+        String message1="{\"sessionId\": 100," +
+                "\"startServerTime\": " + "\""+ UserDataImpl.getStartServerTime()+"\""+","+
+                "\"from_x\": -1," +
+                "\"from_y\": -1," +
+                "\"to_x\": -1," +
+                "\"to_y\": -1," +
+                "\"status\": \"somestatus\"}";
+        webSocket.onWebSocketText(message1);
+        UserDataImpl.putLogInUser("100",user);
+        webSocket.onWebSocketText(message1);
+        String message2="{\"sessionId\": 100," +
                 "\"startServerTime\": " + "\""+ UserDataImpl.getStartServerTime()+"\""+","+
                 "\"from_x\": 1," +
                 "\"from_y\": 1," +
                 "\"to_x\": 2," +
                 "\"to_y\": 2," +
                 "\"status\": \"somestatus\"}";
-        String serviceName = "GameMechanic";
-        UserDataSet user = TestingUtils.getUserDataSet(10, "dmitry", 1, 1, 1);
-        UserDataImpl.putLogInUser("100",user);
-        ms.addService(new Address(),serviceName);
-        webSocket.onWebSocketText(message);
-        Assert.assertNotNull(ms.getMsgQueueByName(serviceName).peek());
+        webSocket.onWebSocketText(message2);
+        Assert.assertTrue((ms.getMsgQueueByName(serviceName).peek() != null)
+        );
     }
 
     @Test
