@@ -1,9 +1,9 @@
+import junit.framework.Assert;
 import org.testng.annotations.Test;
 import utils.CookieDescriptor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
@@ -21,6 +21,6 @@ public class CookieDescriptorTest {
         String valueOfCookie ="1";
         Cookie cookies[] = {new Cookie(nameOfCookie,valueOfCookie)};
         CookieDescriptor cookie = new CookieDescriptor(cookies);
-        assertEquals(cookie.getCookieByName(nameOfCookie),valueOfCookie);
+        Assert.assertEquals(cookie.getCookieByName(nameOfCookie), valueOfCookie);
     }
 }

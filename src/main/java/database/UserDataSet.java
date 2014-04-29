@@ -19,6 +19,8 @@ public class UserDataSet{
 		color=null;
 	}
 
+
+
 	public UserDataSet(){
 		mUserModel = new UserModel();
         visit();

@@ -1,9 +1,10 @@
-import database.UserDataSet;
+import datebase.UserDataSet;
 import gameClasses.Field;
 import gameClasses.Stroke;
 import gameMechanic.GameMechanicImpl;
 import gameMechanic.GameSession;
 import messageSystem.Address;
+import messageSystem.MessageSystem;
 import messageSystem.MessageSystemImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ import testingUtils.TestingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by dmitry on 29.04.14.
@@ -21,8 +23,8 @@ public class GameMechanicTest {
         MessageSystemImpl ms = new MessageSystemImpl();
         GameMechanicImpl gm = new GameMechanicImpl(ms);
         ms.addService(new Address(),"GameChat");
-        Map<String, UserDataSet> users = new HashMap<String, UserDataSet>();
-        UserDataSet user1 = TestingUtils.getUserDataSet(1, "dmitry", 20, 10, 5);
+        Map<String,UserDataSet> users = new HashMap<String, UserDataSet>();
+        UserDataSet user1 = TestingUtils.getUserDataSet(1,"dmitry",20,10,5);
         UserDataSet user2 = TestingUtils.getUserDataSet(2,"alexander",20,10,5);
         UserDataSet user3 = TestingUtils.getUserDataSet(3,"pavel",20,10,5);
         UserDataSet user4 = TestingUtils.getUserDataSet(4,"alexey",20,10,5);
