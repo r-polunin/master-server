@@ -1,9 +1,9 @@
-package messageSystem.frontend;
+package messageSystem.datebase;
 
 import database.UserDataSet;
 import messageSystem.Address;
 import frontend.UserData;
-import messageSystem.MsgToUserData;
+import messageSystem.datebase.MsgToUserData;
 
 
 public class MsgUpdateUser extends MsgToUserData{
@@ -16,6 +16,7 @@ public class MsgUpdateUser extends MsgToUserData{
 		this.uds=uds;
 	}
 
+    @Override
 	public void exec(UserData userData){
 		userData.updateUserId(sessionId, uds);
 	}

@@ -1,15 +1,19 @@
-package messageSystem;
+package messageSystem.datebase;
 
 import database.DataAccessObject;
+import messageSystem.Abonent;
+import messageSystem.Address;
+import messageSystem.Msg;
 
 
-public abstract class MsgToDBService extends Msg{
+public abstract class MsgToDBService extends Msg {
 
 	public MsgToDBService(Address from, Address to){
 		super(from,to);
 	}
 
-	public void exec(Address abonent){
+    @Override
+	public void exec(Abonent abonent){
 		if (abonent instanceof DataAccessObject){
 			exec((DataAccessObject)abonent);
 		}

@@ -15,8 +15,10 @@ public class AddressServiceImpl implements AddressService{
 	private Map<String, Integer> nameToLast = 
 			new HashMap<String, Integer>();
 
-	AddressServiceImpl(){
+	public AddressServiceImpl(){
 	}
+
+    @Override
 	public void addService (Address abonent,String name){
 		if(!nameToQuantity.containsKey(name))
 			nameToQuantity.put(name, 0);
@@ -26,12 +28,10 @@ public class AddressServiceImpl implements AddressService{
 			nameToLast.put(name, 1);
 	}
 
+    @Override
 	public Address getAddressByName(String name){
 		if (!nameToQuantity.containsKey(name)){
-			System.err.println("Service "+name+" not found");
-			System.err.println("Shutdown");
-			System.exit(-1);
-			return null;
+			throw new RuntimeException("Service "+name+" not found");
 		}
 		String number = String.valueOf(nameToLast.get(name));
 		nameToLast.put(name, (nameToLast.get(name)+1)%nameToQuantity.get(name)+1);

@@ -1,12 +1,12 @@
-package gameMechanic.gameCreating;
+package messageSystem.gameMech;
 
 import java.util.Map;
 
 import database.UserDataSet;
 
+import gameMechanic.GameMechanicImpl;
 import messageSystem.Address;
 import gameMechanic.GameMechanic;
-import messageSystem.MsgToGameMechanic;
 
 
 public class MsgCreateGames extends MsgToGameMechanic{
@@ -21,7 +21,8 @@ public class MsgCreateGames extends MsgToGameMechanic{
         return address;
     }
 
-	public void exec(GameMechanic gameMechanic){
+    @Override
+    public void exec(GameMechanic gameMechanic){
 		Map<String,String> sessionIdToColor=gameMechanic.createGames(users);
 		Address to=gameMechanic.getMessageSystem().getAddressByName("WebSocket");
 		MsgUpdateColors msg=new MsgUpdateColors(gameMechanic.getAddress(),to,sessionIdToColor);

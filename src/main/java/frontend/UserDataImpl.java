@@ -1,6 +1,7 @@
 package frontend;
 
-import gameMechanic.gameCreating.MsgCreateGames;
+import messageSystem.gameMech.MsgRemoveUserFromGM;
+import messageSystem.gameMech.MsgCreateGames;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ public class UserDataImpl implements UserData{
 		messageSystem.addService(address,"UserData");
 	}
 
+    @Override
 	public Address getAddress(){
 		return address;
 	}
@@ -242,7 +244,7 @@ public class UserDataImpl implements UserData{
 		int count=0;
 		while(true){
 			count=(count+1)%250;
-			messageSystem.execForAbonent(address);
+			messageSystem.execForAbonent(this);
 			checkUsers(count);
 			createGames();
 			TimeHelper.sleep(200);

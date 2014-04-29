@@ -1,12 +1,13 @@
-package gameMechanic.Stroke;
+package messageSystem.Stroke;
 
 import java.util.Map;
 
 import gameClasses.Stroke;
 
+import gameMechanic.GameMechanic;
 import messageSystem.Address;
 import gameMechanic.GameMechanicImpl;
-import messageSystem.MsgToGameMechanic;
+import messageSystem.gameMech.MsgToGameMechanic;
 
 public class MsgCheckStroke extends MsgToGameMechanic{
 	final private int id;
@@ -17,7 +18,8 @@ public class MsgCheckStroke extends MsgToGameMechanic{
 		id=idIn;
 	}
 
-	public void exec(GameMechanicImpl gameMechanic){
+    @Override
+	public void exec(GameMechanic gameMechanic){
 		Map<Integer,Stroke> resp=gameMechanic.checkStroke(id,stroke);
 		Address to=gameMechanic.getMessageSystem().getAddressByName("WebSocket");
 		MsgDoneStroke msg=new MsgDoneStroke(gameMechanic.getAddress(),to,resp);

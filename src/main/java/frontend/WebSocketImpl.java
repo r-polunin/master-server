@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 import messageSystem.Address;
 import messageSystem.MessageSystem;
 
-import gameMechanic.Stroke.MsgCheckStroke;
+import messageSystem.Stroke.MsgCheckStroke;
 
 import database.UserDataSet;
 import gameClasses.Snapshot;
@@ -36,6 +36,7 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 		messageSystem=msgSystem;
 	}
 
+    @Override
 	public Address getAddress() {
 		return address;
 	}
@@ -161,7 +162,7 @@ public class WebSocketImpl  extends WebSocketAdapter implements WebSocket{
 
 	public void run() {
 		while(true){
-			messageSystem.execForAbonent(address);
+			messageSystem.execForAbonent(this);
 			TimeHelper.sleep(200);
 		}
 

@@ -10,10 +10,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import messageSystem.datebase.MsgAddUser;
+import messageSystem.datebase.MsgGetUser;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-
-import messageSystem.frontend.*;
 
 import utils.CookieDescriptor;
 import utils.SHA2;
@@ -38,7 +38,8 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 		messageSystem.addService(address,"Frontend");
 	}
 
-	public Address getAddress(){
+    @Override
+    public Address getAddress(){
 		return address;
 	}
 

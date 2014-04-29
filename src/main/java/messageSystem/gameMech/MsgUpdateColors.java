@@ -1,10 +1,9 @@
-package gameMechanic.gameCreating;
+package messageSystem.gameMech;
 
 import java.util.Map;
 
 import messageSystem.Address;
 import frontend.WebSocket;
-import messageSystem.MsgToWebSocket;
 
 
 public class MsgUpdateColors extends MsgToWebSocket{
@@ -15,6 +14,7 @@ public class MsgUpdateColors extends MsgToWebSocket{
 		usersToColors=data;
 	}
 
+    @Override
 	public void exec(WebSocket webSocket){
 		webSocket.updateUsersColor(usersToColors);
 	}

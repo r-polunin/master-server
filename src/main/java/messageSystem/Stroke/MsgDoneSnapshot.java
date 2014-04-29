@@ -1,10 +1,10 @@
-package gameMechanic.Stroke;
+package messageSystem.Stroke;
 
 import gameClasses.Snapshot;
 
 import messageSystem.Address;
 import frontend.WebSocket;
-import messageSystem.MsgToWebSocket;
+import messageSystem.gameMech.MsgToWebSocket;
 
 
 public class MsgDoneSnapshot extends MsgToWebSocket{

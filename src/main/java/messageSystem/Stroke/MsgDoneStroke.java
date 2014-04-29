@@ -1,4 +1,4 @@
-package gameMechanic.Stroke;
+package messageSystem.Stroke;
 
 import java.util.Map;
 
@@ -6,7 +6,7 @@ import gameClasses.Stroke;
 
 import messageSystem.Address;
 import frontend.WebSocket;
-import messageSystem.MsgToWebSocket;
+import messageSystem.gameMech.MsgToWebSocket;
 
 
 public class MsgDoneStroke extends MsgToWebSocket{

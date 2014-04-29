@@ -1,8 +1,7 @@
-package gameMechanic.gameCreating;
+package messageSystem.gameMech;
 
 import messageSystem.Address;
 import chat.GameChat;
-import messageSystem.MsgToGameChat;
 
 public class MsgCreateChat extends MsgToGameChat{
 	final private String sessionId1,sessionId2;
@@ -12,7 +11,8 @@ public class MsgCreateChat extends MsgToGameChat{
 		this.sessionId1=sessionId1;
 		this.sessionId2=sessionId2;
 	}
-	
+
+    @Override
 	public void exec(GameChat gameChat){
 		gameChat.createChat(sessionId1, sessionId2);
 	}

@@ -1,6 +1,5 @@
-package frontend;
+package messageSystem.gameMech;
 
-import messageSystem.MsgToGameMechanic;
 import messageSystem.Address;
 import gameMechanic.GameMechanic;
 
@@ -11,7 +10,8 @@ public class MsgRemoveUserFromGM extends MsgToGameMechanic{
 		super(from, to);
 		this.sessionId=sessionId;
 	}
-	
+
+    @Override
 	public void exec(GameMechanic gameMechanic){
 		gameMechanic.removeUser(sessionId);
 	}

@@ -6,9 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import messageSystem.Abonent;
 import org.eclipse.jetty.server.Request;
 
-public interface Frontend {
+public interface Frontend extends Abonent {
 	public void handle(String target,Request baseRequest,
 			HttpServletRequest request, HttpServletResponse response) 
 					throws IOException, ServletException;

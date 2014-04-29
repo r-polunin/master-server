@@ -62,7 +62,7 @@ public class GameChatImpl implements GameChat{
 
 	public void run(){
 		while(true){
-			messageSystem.execForAbonent(address);
+			messageSystem.execForAbonent(this);
 			TimeHelper.sleep(200);
 		}
 	}

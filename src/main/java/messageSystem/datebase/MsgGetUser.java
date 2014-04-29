@@ -1,9 +1,8 @@
-package messageSystem.frontend;
+package messageSystem.datebase;
 
 import database.UserDataSet;
 import messageSystem.Address;
 import database.DataAccessObject;
-import messageSystem.MsgToDBService;
 
 
 public class MsgGetUser extends MsgToDBService{
@@ -18,6 +17,7 @@ public class MsgGetUser extends MsgToDBService{
 		this.password=password;
 	}
 
+    @Override
 	public void exec(DataAccessObject dbService){
 		UserDataSet uds=dbService.getUDS(login, password);
 		Address to=getFrom();

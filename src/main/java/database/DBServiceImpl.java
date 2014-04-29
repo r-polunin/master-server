@@ -25,6 +25,7 @@ public class DBServiceImpl implements DataAccessObject{
 		return messageSystem;
 	}
 
+    @Override
 	public Address getAddress(){
 		return address;
 	}
@@ -61,6 +62,7 @@ public class DBServiceImpl implements DataAccessObject{
         return new UserDataSet(userModel);
     }
 
+    @Override
 	public boolean addUDS(final String login,String password){
         Session session = null;
         //TODO: tmp block, solution: unique database nickname field and exception handling;
@@ -121,6 +123,7 @@ public class DBServiceImpl implements DataAccessObject{
         return null;
     }
 
+    @Override
 	public void updateUsers(List<UserDataSet> users){
 		ListIterator<UserDataSet> li = users.listIterator();
 		while(li.hasNext()){
@@ -172,10 +175,10 @@ public class DBServiceImpl implements DataAccessObject{
         }
     }
 
-
+    @Override
     public void run(){
 		while(true){
-			messageSystem.execForAbonent(address);
+			messageSystem.execForAbonent(this);
 			TimeHelper.sleep(200);
 		}
 	}

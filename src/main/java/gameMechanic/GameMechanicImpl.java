@@ -9,8 +9,8 @@ import messageSystem.MessageSystem;
 import database.UserDataSet;
 import gameClasses.Snapshot;
 import gameClasses.Stroke;
-import gameMechanic.Stroke.*;
-import gameMechanic.gameCreating.MsgCreateChat;
+import messageSystem.Stroke.*;
+import messageSystem.gameMech.MsgCreateChat;
 import utils.Caster;
 import utils.TimeHelper;
 
@@ -36,6 +36,7 @@ public class GameMechanicImpl implements GameMechanic{
 		messageSystem.addService(address,"GameMechanic");
 	}
 
+    @Override
 	public Address getAddress(){
 		return address;
 	}
@@ -217,7 +218,7 @@ public class GameMechanicImpl implements GameMechanic{
 	
 	public void run(){
 		while(true){
-			messageSystem.execForAbonent(address);
+			messageSystem.execForAbonent(this);
 			removeDeadGames();
 			TimeHelper.sleep(200);
 		}

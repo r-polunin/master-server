@@ -1,8 +1,8 @@
-package gameMechanic.Stroke;
+package messageSystem.Stroke;
 
 import messageSystem.Address;
 import frontend.UserData;
-import messageSystem.MsgToUserData;
+import messageSystem.datebase.MsgToUserData;
 
 public class MsgPartyEnd extends MsgToUserData{
 	int winId, loseId;
