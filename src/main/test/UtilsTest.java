@@ -12,7 +12,6 @@ import java.util.Map;
  * Created by Ruslan on 29.04.2014.
  */
 public class UtilsTest {
-
     @Test
     public void casterTest() {
         Map<String, String> map = new HashMap<String, String>();
