@@ -22,6 +22,14 @@ public class GameMechanicImpl implements GameMechanic{
 	final private Address address;
 	final private MessageSystem messageSystem;
 
+    public Map<String, UserDataSet> getWantToPlay(){
+        return wantToPlay;
+    }
+
+    public Map<Integer,GameSession> getUserIdToSession(){
+        return userIdToSession;
+    }
+
 	public GameMechanicImpl(MessageSystem msgSystem){
 		address=new Address();
 		messageSystem=msgSystem;
@@ -108,7 +116,8 @@ public class GameMechanicImpl implements GameMechanic{
 		if(users.size()%2==1)
 			moveUser(users);
 		String[] keys = Caster.castKeysToStrings(users);
-		for(int count=0;count<users.size()/2;count++){
+        int currentUserSize = users.size()/2;
+		for(int count=0;count<currentUserSize;count++){
 			if(randomMod2()==1){
 				sessionIdBlack = keys[count*2];
 				sessionIdWhite = keys[count*2+1];
@@ -129,13 +138,14 @@ public class GameMechanicImpl implements GameMechanic{
 		int to_x  =stroke.getTo_X();
 		int to_y=stroke.getTo_Y();
 		String status=stroke.getStatus();
-		Map<Integer,Stroke> resp=new HashMap<Integer,Stroke>();
+		Map<Integer,Stroke> resp=null;
 		if(gameSession==null)
 			return resp;
 		if(status.equals("lose")){
-			sendResultStroke(gameSession, gameSession.getAnotherId(id));
+			resp = sendResultStroke(gameSession, gameSession.getAnotherId(id));
 			return resp;
 		}
+        resp=new HashMap<Integer,Stroke>();
 		if(gameSession.checkStroke(id, from_x, from_y, to_x, to_y)){
 			stroke.setStatus("true");
 			stroke.setNext(gameSession.getNext());
@@ -158,7 +168,7 @@ public class GameMechanicImpl implements GameMechanic{
 		return resp;
 	}
 
-	private void sendResultStroke(GameSession gameSession, int winnerId){
+	private Map<Integer,Stroke> sendResultStroke(GameSession gameSession, int winnerId){
 		Stroke winStroke = new Stroke("win");
 		Stroke loseStroke=new Stroke("lose");
 		Map<Integer,Stroke> resp=new HashMap<Integer,Stroke>();
@@ -172,6 +182,7 @@ public class GameMechanicImpl implements GameMechanic{
 		messageSystem.putMsg(to, msg);
 		userIdToSession.remove(winnerId);
 		userIdToSession.remove(gameSession.getAnotherId(winnerId));
+        return resp;
 	}
 	
 	private void updateUsersRating(int winnerId, int loseId){

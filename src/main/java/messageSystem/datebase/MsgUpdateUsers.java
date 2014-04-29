@@ -14,6 +14,6 @@ public class MsgUpdateUsers extends MsgToDBService{
 		this.users=users;
 	}
 	public void exec(DataAccessObject dbService){
-		dbService.updateUsers(users);
+		//dbService.updateUsers(users);
 	}
 }

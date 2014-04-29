@@ -1,7 +1,6 @@
-package utils;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.VFS;
 
 /**
  * Created by dmitry on 22.04.14.

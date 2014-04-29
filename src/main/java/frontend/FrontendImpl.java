@@ -99,7 +99,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 
     }
 
-    boolean sendPagesDependOnLocation(String target, UserDataSet userSession, HttpServletResponse response) {
+    public boolean sendPagesDependOnLocation(String target, UserDataSet userSession, HttpServletResponse response) {
         if(!inWeb(target)){
             if(!isStatic(target)){
                 return sendPage("404.html",userSession,response);
@@ -169,7 +169,7 @@ public class FrontendImpl extends AbstractHandler implements Frontend{
 				||(!UserDataImpl.containsSessionId(strSessionId)));
 	}
 
-	boolean sendPage(String name, UserDataSet userSession, HttpServletResponse response){
+	public boolean sendPage(String name, UserDataSet userSession, HttpServletResponse response){
 		try {
 			Map<String, String> data = new HashMap<String, String>();
 			data.put("page", name);

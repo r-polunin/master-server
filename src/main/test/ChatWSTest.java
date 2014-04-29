@@ -1,6 +1,6 @@
 package chat;
 
-import database.UserDataSet;
+import datebase.UserDataSet;
 import frontend.UserDataImpl;
 import messageSystem.MessageSystemImpl;
 import org.eclipse.jetty.websocket.api.Session;
@@ -34,7 +34,7 @@ public class ChatWSTest {
         chatWS.onWebSocketText(message);
         List<ChatMessage> q = gchat.getChatMessageQueueBySessionId(senderSessionId);
         ChatMessage cm = q.get(0);
-        Assert.assertEquals(cm.text,text);
+        Assert.assertEquals(cm.getMessage(),text);
     }
 
     @Test
