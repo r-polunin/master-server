@@ -25,6 +25,9 @@
         <module name="java-server" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="java-server" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
