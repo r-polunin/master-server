@@ -45,19 +45,25 @@ public class UserDataTest {
         UserDataImpl userDataImpl = new UserDataImpl(ms);
         int winId = 10;
         int loseId = 20;
-        String winSessionId = "101";
-        String loseSessionId = "202";
+        String winSessionId1 = "101";
+        String loseSessionId1 = "202";
         int winRating = 435;
         int loseRating = 267;
         Rating.setRatingFields(173,24,145,10);
         String serviceName = "DBService";
         ms.addService(new Address(),serviceName);
-        UserDataSet winUserSession = TestingUtils.getUserDataSet(winId, "winner", winRating, 41, 4);
-        UserDataSet loseUserSession = TestingUtils.getUserDataSet(loseId,"loser",loseRating,13,25);
-        UserDataImpl.putSessionIdAndUserSession(winSessionId,winUserSession);
-        UserDataImpl.putSessionIdAndUserSession(loseSessionId, loseUserSession);
-        UserDataImpl.putLogInUser(winSessionId, winUserSession);
-        UserDataImpl.putLogInUser(loseSessionId,loseUserSession);
-        Assert.assertTrue(userDataImpl.partyEnd(winId, loseId));
+        String winSessionId2 = "100";
+        String loseSessionId2 = "200";
+        UserDataImpl.putLogInUser(winSessionId2, TestingUtils.getUserDataSet(winId, "winner", winRating, 41, 4));
+        UserDataImpl.putLogInUser(loseSessionId2,TestingUtils.getUserDataSet(loseId, "loser", loseRating,13,25));
+        boolean flag1 = !userDataImpl.partyEnd(winId, loseId);
+        UserDataSet winUserSession = TestingUtils.getUserDataSet(11, "winner", winRating, 41, 4);
+        UserDataSet loseUserSession = TestingUtils.getUserDataSet(12,"loser",loseRating,13,25);
+        UserDataImpl.putSessionIdAndUserSession(winSessionId1,winUserSession);
+        UserDataImpl.putSessionIdAndUserSession(loseSessionId1, loseUserSession);
+        UserDataImpl.putLogInUser(winSessionId1, winUserSession);
+        UserDataImpl.putLogInUser(loseSessionId1,loseUserSession);
+        boolean flag2 = userDataImpl.partyEnd(11, 12);
+        Assert.assertTrue(flag1 && flag2);
     }
 }
